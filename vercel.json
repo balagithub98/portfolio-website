@@ -4,15 +4,11 @@
   "outputDirectory": ".next",
   "installCommand": "npm ci",
   "devCommand": "npm run dev",
-  "functions": {
-    "supabase/functions/**/*.ts": {
-      "runtime": "nodejs18.x"
-    }
-  },
+
   "rewrites": [
     {
       "source": "/api/supabase/:path*",
-      "destination": "https://your-project-ref.supabase.co/functions/v1/:path*"
+      "destination": "https://olpplvdnhzsembzphhl.supabase.co/functions/v1/:path*"
     },
     {
       "source": "/sitemap.xml",
