@@ -33,7 +33,7 @@ Go to your GitHub repository → **Settings** → **Secrets and variables** → 
 - [ ] `VERCEL_PROJECT_ID` = `prj_sKaU7mev3zbuKz2ff0JO04AMcsWk`
 - [ ] `NEXT_PUBLIC_SUPABASE_URL` = `https://olpplvdnhzsembzphhl.supabase.co`
 - [ ] `NEXT_PUBLIC_SUPABASE_ANON_KEY` = `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9scHBsdmRuaHpzZW1ienB2aGhsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTY4NjY0MDQsImV4cCI6MjA3MjQ0MjQwNH0.O2iJwzHXwVuZ4-sWbmAGqwjlAQjqMu_ohF5Th2paVP0`
-- [ ] `NEXT_PUBLIC_APP_NAME` = `Portfolio Website`
+- [ ] `NEXT_PUBLIC_APP_NAME` = `hyybuu`
 
 ### Optional Secrets
 - [ ] `MAILERSEND_API_KEY` = `mlsn.8350e37d880eb8989cf4420557f3ba1ccd6d850bfb117464107b6747e829b7c6`

@@ -2,7 +2,7 @@ export function StructuredData() {
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "name": "Your Company",
+    "name": "hyybuu",
     "description": "Professional web design, development, and marketing services",
     "url": process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000",
     "logo": `${process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000"}/logo.png`,
@@ -21,10 +21,10 @@ export function StructuredData() {
       "addressCountry": "US"
     },
     "sameAs": [
-      "https://facebook.com/yourcompany",
-      "https://twitter.com/yourcompany",
-      "https://linkedin.com/company/yourcompany",
-      "https://instagram.com/yourcompany"
+      "https://facebook.com/hyybuu",
+      "https://twitter.com/hyybuu",
+      "https://linkedin.com/company/hyybuu",
+      "https://instagram.com/hyybuu"
     ],
     "service": [
       {
@@ -48,12 +48,12 @@ export function StructuredData() {
   const websiteSchema = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    "name": "Your Company",
+    "name": "hyybuu",
     "url": process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000",
     "description": "Professional web design, development, and marketing services",
     "publisher": {
       "@type": "Organization",
-      "name": "Your Company"
+      "name": "hyybuu"
     },
     "potentialAction": {
       "@type": "SearchAction",

@@ -111,7 +111,7 @@ serve(async (req) => {
         body: JSON.stringify({
           from: {
             email: Deno.env.get('MAILERSEND_FROM_EMAIL') || 'no-reply@yourdomain.com',
-            name: 'Portfolio Website'
+            name: 'hyybuu'
           },
           to: [
             {

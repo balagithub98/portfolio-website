@@ -47,9 +47,9 @@ export function Footer() {
           <div className="space-y-8">
             <div className="flex items-center space-x-2">
               <div className="h-8 w-8 rounded-lg bg-primary flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-sm">Y</span>
+                <span className="text-primary-foreground font-bold text-sm">H</span>
               </div>
-              <span className="text-xl font-bold text-white">Your Company</span>
+              <span className="text-xl font-bold text-white">hyybuu</span>
             </div>
             <p className="text-sm leading-6 text-gray-300">
               Transform your business with our comprehensive web design, development, and marketing services. 

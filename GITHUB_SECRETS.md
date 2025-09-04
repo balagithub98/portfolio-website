@@ -26,7 +26,7 @@ Go to your GitHub repository → **Settings** → **Secrets and variables** → 
 | Secret Name | Value |
 |-------------|-------|
 | `NEXT_PUBLIC_APP_URL` | `https://your-project.vercel.app` (update with your actual Vercel URL) |
-| `NEXT_PUBLIC_APP_NAME` | `Portfolio Website` |
+| `NEXT_PUBLIC_APP_NAME` | `hyybuu` |
 
 ### MailerSend Configuration (Optional)
 

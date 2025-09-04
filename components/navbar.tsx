@@ -22,12 +22,12 @@ export function Navbar() {
           {/* Logo */}
           <div className="flex lg:flex-1">
             <Link href="/" className="-m-1.5 p-1.5">
-              <span className="sr-only">Your Company</span>
+              <span className="sr-only">hyybuu</span>
               <div className="flex items-center space-x-2">
                 <div className="h-8 w-8 rounded-lg bg-primary flex items-center justify-center">
-                  <span className="text-primary-foreground font-bold text-sm">Y</span>
+                  <span className="text-primary-foreground font-bold text-sm">H</span>
                 </div>
-                <span className="text-xl font-bold">Your Company</span>
+                <span className="text-xl font-bold">hyybuu</span>
               </div>
             </Link>
           </div>
@@ -74,12 +74,12 @@ export function Navbar() {
           <div className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
             <div className="flex items-center justify-between">
               <Link href="/" className="-m-1.5 p-1.5">
-                <span className="sr-only">Your Company</span>
+                <span className="sr-only">hyybuu</span>
                 <div className="flex items-center space-x-2">
                   <div className="h-8 w-8 rounded-lg bg-primary flex items-center justify-center">
-                    <span className="text-primary-foreground font-bold text-sm">Y</span>
+                    <span className="text-primary-foreground font-bold text-sm">H</span>
                   </div>
-                  <span className="text-xl font-bold">Your Company</span>
+                  <span className="text-xl font-bold">hyybuu</span>
                 </div>
               </Link>
               <button

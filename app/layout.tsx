@@ -14,13 +14,13 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: {
     default: 'Professional Web Design & Development Services',
-    template: '%s | Your Portfolio Website'
+    template: '%s | hyybuu'
   },
   description: 'Transform your business with our comprehensive web design, development, and marketing services. Get your website for free with our expert team.',
   keywords: ['web design', 'web development', 'digital marketing', 'SEO', 'portfolio', 'business website'],
-  authors: [{ name: 'Your Name' }],
-  creator: 'Your Name',
-  publisher: 'Your Company',
+  authors: [{ name: 'hyybuu' }],
+  creator: 'hyybuu',
+  publisher: 'hyybuu',
   formatDetection: {
     email: false,
     address: false,
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     url: '/',
     title: 'Professional Web Design & Development Services',
     description: 'Transform your business with our comprehensive web design, development, and marketing services. Get your website for free with our expert team.',
-    siteName: 'Your Portfolio Website',
+    siteName: 'hyybuu',
     images: [
       {
         url: '/og-image.jpg',
