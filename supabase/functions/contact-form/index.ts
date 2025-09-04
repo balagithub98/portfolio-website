@@ -100,8 +100,56 @@ serve(async (req) => {
       )
     }
 
-    // Send notification email (optional - requires email service setup)
-    // You can integrate with services like SendGrid, Resend, or Supabase Edge Functions for email
+    // Send notification email using MailerSend
+    try {
+      const mailerSendResponse = await fetch('https://api.mailersend.com/v1/email', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${Deno.env.get('MAILERSEND_API_KEY')}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          from: {
+            email: Deno.env.get('MAILERSEND_FROM_EMAIL') || 'no-reply@yourdomain.com',
+            name: 'Portfolio Website'
+          },
+          to: [
+            {
+              email: Deno.env.get('CONTACT_EMAIL') || 'contact@yourdomain.com',
+              name: 'Website Contact'
+            }
+          ],
+          subject: `New Contact Form Submission - ${service_type || 'General Inquiry'}`,
+          html: `
+            <h2>New Contact Form Submission</h2>
+            <p><strong>Name:</strong> ${name}</p>
+            <p><strong>Email:</strong> ${email}</p>
+            <p><strong>Service Type:</strong> ${service_type || 'General Inquiry'}</p>
+            <p><strong>Message:</strong></p>
+            <p>${message}</p>
+            <p><strong>Submitted:</strong> ${new Date().toLocaleString()}</p>
+            <p><strong>IP Address:</strong> ${clientIP}</p>
+          `,
+          text: `
+            New Contact Form Submission
+            
+            Name: ${name}
+            Email: ${email}
+            Service Type: ${service_type || 'General Inquiry'}
+            Message: ${message}
+            Submitted: ${new Date().toLocaleString()}
+            IP Address: ${clientIP}
+          `
+        })
+      })
+
+      if (!mailerSendResponse.ok) {
+        console.warn('Failed to send email notification:', await mailerSendResponse.text())
+      }
+    } catch (emailError) {
+      console.warn('Email notification failed:', emailError)
+      // Don't fail the form submission if email fails
+    }
 
     return new Response(
       JSON.stringify({ 
