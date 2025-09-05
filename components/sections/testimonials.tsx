@@ -40,7 +40,7 @@ const testimonials = [
 
 export function Testimonials() {
   return (
-    <section className="py-24 sm:py-32 bg-white">
+    <section className="py-24 sm:py-32 bg-gradient-to-br from-amber-50 to-orange-50">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <motion.div
@@ -67,14 +67,14 @@ export function Testimonials() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="relative bg-gray-50 rounded-2xl p-8"
+                className="relative bg-white/70 backdrop-blur-md rounded-2xl p-8 shadow-lg border-2 border-amber-200 hover:shadow-xl transition-all duration-300"
               >
                 <div className="absolute top-6 right-6">
                   <Quote className="h-8 w-8 text-gray-300" />
                 </div>
                 
                 <div className="flex items-center mb-6">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary text-primary-foreground font-semibold">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-r from-amber-500 to-orange-500 text-white font-semibold shadow-lg">
                     {testimonial.avatar}
                   </div>
                   <div className="ml-4">

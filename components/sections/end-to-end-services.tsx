@@ -8,25 +8,31 @@ const services = [
     icon: Palette,
     title: 'Design',
     description: 'Beautiful, user-friendly designs that convert visitors into customers',
-    features: ['UI/UX Design', 'Brand Identity', 'Responsive Design', 'User Research']
+    features: ['UI/UX Design', 'Brand Identity', 'Responsive Design', 'User Research'],
+    color: 'from-purple-500 to-pink-500',
+    bgColor: 'from-purple-50 to-pink-50'
   },
   {
     icon: Code,
     title: 'Development',
     description: 'Fast, secure, and scalable websites built with modern technology',
-    features: ['Frontend Development', 'Backend Development', 'Database Design', 'Performance Optimization']
+    features: ['Frontend Development', 'Backend Development', 'Database Design', 'Performance Optimization'],
+    color: 'from-blue-500 to-cyan-500',
+    bgColor: 'from-blue-50 to-cyan-50'
   },
   {
     icon: TrendingUp,
     title: 'Marketing',
     description: 'Data-driven strategies to grow your online presence and reach',
-    features: ['SEO Optimization', 'Content Marketing', 'Social Media', 'Analytics & Reporting']
+    features: ['SEO Optimization', 'Content Marketing', 'Social Media', 'Analytics & Reporting'],
+    color: 'from-green-500 to-emerald-500',
+    bgColor: 'from-green-50 to-emerald-50'
   }
 ]
 
 export function EndToEndServices() {
   return (
-    <section className="py-24 sm:py-32 bg-white">
+    <section className="py-24 sm:py-32 bg-gradient-to-br from-orange-50 to-red-50">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <motion.div
@@ -53,17 +59,23 @@ export function EndToEndServices() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.2 }}
                 viewport={{ once: true }}
-                className="relative bg-white rounded-2xl p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-shadow"
+                className={`relative bg-white/70 backdrop-blur-md rounded-2xl p-8 shadow-lg border-2 hover:shadow-xl transition-all duration-300 hover:scale-105`}
+                style={{
+                  background: `linear-gradient(135deg, rgba(255,255,255,0.7) 0%, rgba(255,255,255,0.3) 100%)`,
+                  borderColor: service.color.includes('purple') ? '#a855f7' : service.color.includes('blue') ? '#3b82f6' : '#10b981'
+                }}
               >
-                <div className="flex h-16 w-16 items-center justify-center rounded-lg bg-primary/10 mb-6">
-                  <service.icon className="h-8 w-8 text-primary" aria-hidden="true" />
+                <div className={`flex h-16 w-16 items-center justify-center rounded-lg bg-gradient-to-r ${service.color} shadow-lg mb-6`}>
+                  <service.icon className="h-8 w-8 text-white" aria-hidden="true" />
                 </div>
                 <h3 className="text-2xl font-bold text-gray-900 mb-4">{service.title}</h3>
                 <p className="text-gray-600 mb-6">{service.description}</p>
                 <ul className="space-y-2">
                   {service.features.map((feature) => (
-                    <li key={feature} className="flex items-center text-sm text-gray-500">
-                      <div className="h-2 w-2 rounded-full bg-primary mr-3"></div>
+                    <li key={feature} className="flex items-center text-sm text-gray-600">
+                      <div className={`h-2 w-2 rounded-full mr-3`} style={{
+                        background: service.color.includes('purple') ? '#a855f7' : service.color.includes('blue') ? '#3b82f6' : '#10b981'
+                      }}></div>
                       {feature}
                     </li>
                   ))}

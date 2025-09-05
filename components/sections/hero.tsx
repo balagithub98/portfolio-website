@@ -7,7 +7,7 @@ import { motion } from 'framer-motion'
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-blue-50 via-white to-purple-50 py-20 sm:py-32">
+    <section className="relative overflow-hidden bg-gradient-to-br from-indigo-100 via-purple-50 to-pink-100 py-20 sm:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-4xl text-center">
           <motion.div
@@ -17,7 +17,7 @@ export function Hero() {
           >
             <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
               Transform Your Business with{' '}
-              <span className="text-primary">Professional Web Services</span>
+              <span className="bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">Professional Web Services</span>
             </h1>
             <p className="mt-6 text-lg leading-8 text-gray-600">
               Get your website for free with our comprehensive design, development, and marketing services. 

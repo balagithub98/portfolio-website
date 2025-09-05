@@ -7,28 +7,36 @@ const promises = [
   {
     icon: RefreshCw,
     title: 'Unlimited Revisions',
-    description: 'We work with you until you\'re 100% satisfied with the result.'
+    description: 'We work with you until you\'re 100% satisfied with the result.',
+    color: 'from-blue-500 to-cyan-500',
+    bgColor: 'from-blue-50 to-cyan-50'
   },
   {
     icon: Headphones,
     title: '24/7 Support',
-    description: 'Round-the-clock assistance to help your business succeed.'
+    description: 'Round-the-clock assistance to help your business succeed.',
+    color: 'from-green-500 to-emerald-500',
+    bgColor: 'from-green-50 to-emerald-50'
   },
   {
     icon: Zap,
     title: 'Fast Delivery',
-    description: 'Get your website live in record time without compromising quality.'
+    description: 'Get your website live in record time without compromising quality.',
+    color: 'from-yellow-500 to-orange-500',
+    bgColor: 'from-yellow-50 to-orange-50'
   },
   {
     icon: Users,
     title: 'Community',
-    description: 'Join our network of successful entrepreneurs and businesses.'
+    description: 'Join our network of successful entrepreneurs and businesses.',
+    color: 'from-purple-500 to-pink-500',
+    bgColor: 'from-purple-50 to-pink-50'
   }
 ]
 
 export function OurPromise() {
   return (
-    <section className="py-24 sm:py-32 bg-white">
+    <section className="py-24 sm:py-32 bg-gradient-to-br from-slate-50 to-blue-50">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <motion.div
@@ -57,8 +65,8 @@ export function OurPromise() {
                 viewport={{ once: true }}
                 className="flex flex-col items-center text-center"
               >
-                <div className="flex h-16 w-16 items-center justify-center rounded-lg bg-primary/10">
-                  <promise.icon className="h-8 w-8 text-primary" aria-hidden="true" />
+                <div className={`flex h-16 w-16 items-center justify-center rounded-lg bg-gradient-to-r ${promise.color} shadow-lg`}>
+                  <promise.icon className="h-8 w-8 text-white" aria-hidden="true" />
                 </div>
                 <dt className="mt-6 text-lg font-semibold leading-7 text-gray-900">
                   {promise.title}

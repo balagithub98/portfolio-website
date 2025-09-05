@@ -52,7 +52,7 @@ export function FAQ() {
   }
 
   return (
-    <section className="py-24 sm:py-32 bg-gray-50">
+    <section className="py-24 sm:py-32 bg-gradient-to-br from-emerald-50 to-teal-50">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <motion.div
@@ -79,11 +79,11 @@ export function FAQ() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden"
+                className="bg-white/70 backdrop-blur-md rounded-2xl shadow-lg border-2 border-emerald-200 overflow-hidden hover:shadow-xl transition-all duration-300"
               >
                 <button
                   onClick={() => toggleItem(index)}
-                  className="w-full px-6 py-6 text-left flex items-center justify-between hover:bg-gray-50 transition-colors"
+                  className="w-full px-6 py-6 text-left flex items-center justify-between hover:bg-white/50 transition-colors"
                 >
                   <h3 className="text-lg font-semibold text-gray-900 pr-4">
                     {faq.question}

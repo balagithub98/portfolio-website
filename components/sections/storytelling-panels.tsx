@@ -71,7 +71,7 @@ const processes = [
 
 export function StorytellingPanels() {
   return (
-    <section className="py-24 sm:py-32 bg-gray-50">
+    <section className="py-24 sm:py-32 bg-gradient-to-br from-slate-50 to-gray-100">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center mb-16">
           <motion.div
@@ -114,7 +114,11 @@ export function StorytellingPanels() {
                     viewport={{ once: true }}
                     className="relative"
                   >
-                    <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 h-full">
+                    <div className="bg-white/70 backdrop-blur-md rounded-2xl p-8 shadow-lg border-2 h-full hover:shadow-xl transition-all duration-300"
+                         style={{
+                           borderColor: process.color.includes('purple') ? '#a855f7' : 
+                                       process.color.includes('blue') ? '#3b82f6' : '#10b981'
+                         }}>
                       <div className={`flex h-16 w-16 items-center justify-center rounded-lg bg-gradient-to-r ${process.color} mb-6`}>
                         <step.icon className="h-8 w-8 text-white" aria-hidden="true" />
                       </div>
