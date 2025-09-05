@@ -34,8 +34,14 @@ const features = [
 
 export function FreeWebsiteOffer() {
   return (
-    <section className="py-24 sm:py-32 bg-gradient-to-br from-indigo-100 via-purple-50 to-pink-100">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+    <section className="py-24 sm:py-32 bg-gradient-to-br from-indigo-200 via-purple-100 to-pink-200 relative overflow-hidden">
+      {/* Background elements */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-20 left-20 w-96 h-96 bg-gradient-to-br from-indigo-300/20 to-purple-300/20 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-20 right-20 w-96 h-96 bg-gradient-to-br from-pink-300/20 to-rose-300/20 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-gradient-to-br from-purple-300/15 to-indigo-300/15 rounded-full blur-2xl"></div>
+      </div>
+      <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -67,12 +73,13 @@ export function FreeWebsiteOffer() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="flex items-start space-x-4 p-6 bg-white/70 backdrop-blur-md rounded-xl shadow-lg border-2 transition-all duration-300 hover:scale-105"
+                className="flex items-start space-x-4 p-6 rounded-xl shadow-xl border-2 transition-all duration-300 hover:scale-105 backdrop-blur-xl"
                 style={{
-                  background: `linear-gradient(135deg, rgba(255,255,255,0.7) 0%, rgba(255,255,255,0.3) 100%)`,
+                  background: `linear-gradient(135deg, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0.2) 100%)`,
                   borderColor: feature.color.includes('pink') ? '#ec4899' : 
                               feature.color.includes('yellow') ? '#f59e0b' :
-                              feature.color.includes('green') ? '#10b981' : '#06b6d4'
+                              feature.color.includes('green') ? '#10b981' : '#06b6d4',
+                  boxShadow: `0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.1)`
                 }}
               >
                 <div className={`flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-r ${feature.color} shadow-lg flex-shrink-0`}>
@@ -94,7 +101,11 @@ export function FreeWebsiteOffer() {
           viewport={{ once: true }}
           className="mt-16 text-center"
         >
-          <div className="bg-white/70 backdrop-blur-md rounded-2xl p-8 shadow-lg border-2 border-pink-200 max-w-2xl mx-auto">
+          <div className="rounded-2xl p-8 shadow-xl border-2 border-pink-200 max-w-2xl mx-auto backdrop-blur-xl"
+               style={{
+                 background: `linear-gradient(135deg, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0.2) 100%)`,
+                 boxShadow: `0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.1)`
+               }}>
             <h3 className="text-2xl font-bold text-gray-900 mb-4">
               What's the Catch?
             </h3>

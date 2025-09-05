@@ -32,8 +32,14 @@ const services = [
 
 export function EndToEndServices() {
   return (
-    <section className="py-24 sm:py-32 bg-gradient-to-br from-orange-50 to-red-50">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+    <section className="py-24 sm:py-32 bg-gradient-to-br from-orange-100 via-red-50 to-pink-100 relative overflow-hidden">
+      {/* Background elements */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-10 right-10 w-72 h-72 bg-gradient-to-br from-orange-300/15 to-red-300/15 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-10 left-10 w-72 h-72 bg-gradient-to-br from-pink-300/15 to-rose-300/15 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/2 left-1/3 w-48 h-48 bg-gradient-to-br from-yellow-300/10 to-orange-300/10 rounded-full blur-2xl"></div>
+      </div>
+      <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -59,10 +65,11 @@ export function EndToEndServices() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.2 }}
                 viewport={{ once: true }}
-                className={`relative bg-white/70 backdrop-blur-md rounded-2xl p-8 shadow-lg border-2 hover:shadow-xl transition-all duration-300 hover:scale-105`}
+                className={`relative rounded-2xl p-8 shadow-xl border-2 hover:shadow-2xl transition-all duration-300 hover:scale-105 backdrop-blur-xl`}
                 style={{
-                  background: `linear-gradient(135deg, rgba(255,255,255,0.7) 0%, rgba(255,255,255,0.3) 100%)`,
-                  borderColor: service.color.includes('purple') ? '#a855f7' : service.color.includes('blue') ? '#3b82f6' : '#10b981'
+                  background: `linear-gradient(135deg, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0.2) 100%)`,
+                  borderColor: service.color.includes('purple') ? '#a855f7' : service.color.includes('blue') ? '#3b82f6' : '#10b981',
+                  boxShadow: `0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.1)`
                 }}
               >
                 <div className={`flex h-16 w-16 items-center justify-center rounded-lg bg-gradient-to-r ${service.color} shadow-lg mb-6`}>

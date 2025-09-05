@@ -40,8 +40,14 @@ const testimonials = [
 
 export function Testimonials() {
   return (
-    <section className="py-24 sm:py-32 bg-gradient-to-br from-amber-50 to-orange-50">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+    <section className="py-24 sm:py-32 bg-gradient-to-br from-amber-100 via-orange-50 to-yellow-100 relative overflow-hidden">
+      {/* Background elements */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-20 right-20 w-80 h-80 bg-gradient-to-br from-amber-300/20 to-orange-300/20 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-20 left-20 w-80 h-80 bg-gradient-to-br from-yellow-300/20 to-amber-300/20 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-br from-orange-300/15 to-yellow-300/15 rounded-full blur-2xl"></div>
+      </div>
+      <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -67,7 +73,11 @@ export function Testimonials() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="relative bg-white/70 backdrop-blur-md rounded-2xl p-8 shadow-lg border-2 border-amber-200 hover:shadow-xl transition-all duration-300"
+                className="relative rounded-2xl p-8 shadow-xl border-2 border-amber-200 hover:shadow-2xl transition-all duration-300 backdrop-blur-xl"
+                style={{
+                  background: `linear-gradient(135deg, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0.2) 100%)`,
+                  boxShadow: `0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.1)`
+                }}
               >
                 <div className="absolute top-6 right-6">
                   <Quote className="h-8 w-8 text-gray-300" />

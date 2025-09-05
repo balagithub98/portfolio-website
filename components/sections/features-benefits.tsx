@@ -50,8 +50,14 @@ const features = [
 
 export function FeaturesBenefits() {
   return (
-    <section className="py-24 sm:py-32 bg-gradient-to-br from-violet-50 to-purple-50">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+    <section className="py-24 sm:py-32 bg-gradient-to-br from-violet-100 via-purple-50 to-indigo-100 relative overflow-hidden">
+      {/* Background elements */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-20 right-20 w-80 h-80 bg-gradient-to-br from-violet-300/20 to-purple-300/20 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-20 left-20 w-80 h-80 bg-gradient-to-br from-indigo-300/20 to-blue-300/20 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-br from-purple-300/15 to-pink-300/15 rounded-full blur-2xl"></div>
+      </div>
+      <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -77,14 +83,15 @@ export function FeaturesBenefits() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="relative bg-white/70 backdrop-blur-md rounded-2xl p-8 shadow-lg border-2 hover:shadow-xl transition-all duration-300 hover:scale-105"
+                className="relative rounded-2xl p-8 shadow-xl border-2 hover:shadow-2xl transition-all duration-300 hover:scale-105 backdrop-blur-xl"
                 style={{
-                  background: `linear-gradient(135deg, rgba(255,255,255,0.7) 0%, rgba(255,255,255,0.3) 100%)`,
+                  background: `linear-gradient(135deg, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0.2) 100%)`,
                   borderColor: feature.color.includes('blue') ? '#3b82f6' : 
                               feature.color.includes('green') ? '#10b981' :
                               feature.color.includes('yellow') ? '#f59e0b' :
                               feature.color.includes('red') ? '#ef4444' :
-                              feature.color.includes('purple') ? '#a855f7' : '#06b6d4'
+                              feature.color.includes('purple') ? '#a855f7' : '#06b6d4',
+                  boxShadow: `0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.1)`
                 }}
               >
                 <div className={`flex h-16 w-16 items-center justify-center rounded-lg bg-gradient-to-r ${feature.color} shadow-lg mb-6`}>

@@ -36,8 +36,13 @@ const promises = [
 
 export function OurPromise() {
   return (
-    <section className="py-24 sm:py-32 bg-gradient-to-br from-slate-50 to-blue-50">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+    <section className="py-24 sm:py-32 bg-gradient-to-br from-slate-100 via-blue-50 to-indigo-100 relative overflow-hidden">
+      {/* Background elements */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-20 left-20 w-64 h-64 bg-gradient-to-br from-blue-300/10 to-cyan-300/10 rounded-full blur-2xl"></div>
+        <div className="absolute bottom-20 right-20 w-64 h-64 bg-gradient-to-br from-indigo-300/10 to-purple-300/10 rounded-full blur-2xl"></div>
+      </div>
+      <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
