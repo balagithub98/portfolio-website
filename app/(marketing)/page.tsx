@@ -3,6 +3,8 @@ import { OurPromise } from '@/components/sections/our-promise'
 import { ProblemStatement } from '@/components/sections/problem-statement'
 import { EndToEndServices } from '@/components/sections/end-to-end-services'
 import { FeaturesBenefits } from '@/components/sections/features-benefits'
+import { ScreenCompatibility } from '@/components/sections/screen-compatibility'
+import { TechIcons } from '@/components/sections/tech-icons'
 import { StorytellingPanels } from '@/components/sections/storytelling-panels'
 import { Testimonials } from '@/components/sections/testimonials'
 import { AwardsAndStats } from '@/components/sections/awards-and-stats'
@@ -26,6 +28,8 @@ export default function HomePage() {
       <ProblemStatement />
       <EndToEndServices />
       <FeaturesBenefits />
+      <ScreenCompatibility />
+      <TechIcons />
       <StorytellingPanels />
       <Testimonials />
       <AwardsAndStats />

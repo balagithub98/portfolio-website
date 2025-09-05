@@ -134,6 +134,37 @@
   animation: float 6s ease-in-out infinite;
 }
 
+/* Tech icon hover animations */
+@keyframes tech-bounce {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-5px); }
+}
+
+.tech-icon:hover {
+  animation: tech-bounce 0.6s ease-in-out;
+}
+
+/* Zigzag animation for tech icons */
+@keyframes zigzag-left {
+  0% { transform: translateX(-100px) rotate(-10deg); opacity: 0; }
+  50% { transform: translateX(-50px) rotate(-5deg); opacity: 0.5; }
+  100% { transform: translateX(0px) rotate(0deg); opacity: 1; }
+}
+
+@keyframes zigzag-right {
+  0% { transform: translateX(100px) rotate(10deg); opacity: 0; }
+  50% { transform: translateX(50px) rotate(5deg); opacity: 0.5; }
+  100% { transform: translateX(0px) rotate(0deg); opacity: 1; }
+}
+
+.zigzag-left {
+  animation: zigzag-left 0.8s ease-out forwards;
+}
+
+.zigzag-right {
+  animation: zigzag-right 0.8s ease-out forwards;
+}
+
 /* Reduced motion support */
 @media (prefers-reduced-motion: reduce) {
   *,
@@ -150,6 +181,15 @@
   }
   
   .floating-element {
+    animation: none;
+  }
+  
+  .tech-icon:hover {
+    animation: none;
+  }
+  
+  .zigzag-left,
+  .zigzag-right {
     animation: none;
   }
 }

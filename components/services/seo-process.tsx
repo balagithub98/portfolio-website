@@ -8,19 +8,25 @@ const steps = [
     icon: Search,
     title: 'Planning & Setup',
     description: 'We analyze your current SEO performance, research keywords, and create a comprehensive strategy tailored to your business goals.',
-    features: ['Keyword Research', 'Competitor Analysis', 'Technical Audit', 'Strategy Development']
+    features: ['Keyword Research', 'Competitor Analysis', 'Technical Audit', 'Strategy Development'],
+    color: 'from-green-500 to-emerald-500',
+    bgColor: 'from-green-50 to-emerald-50'
   },
   {
     icon: Settings,
     title: 'Implementation',
     description: 'Our team implements on-page and technical SEO optimizations, creates quality content, and builds authoritative backlinks.',
-    features: ['On-Page Optimization', 'Technical SEO', 'Content Creation', 'Link Building']
+    features: ['On-Page Optimization', 'Technical SEO', 'Content Creation', 'Link Building'],
+    color: 'from-blue-500 to-cyan-500',
+    bgColor: 'from-blue-50 to-cyan-50'
   },
   {
     icon: BarChart3,
     title: 'Monitoring',
     description: 'We continuously monitor your rankings, traffic, and conversions, making data-driven adjustments to maximize your results.',
-    features: ['Performance Tracking', 'Ranking Monitoring', 'Traffic Analysis', 'Conversion Optimization']
+    features: ['Performance Tracking', 'Ranking Monitoring', 'Traffic Analysis', 'Conversion Optimization'],
+    color: 'from-purple-500 to-pink-500',
+    bgColor: 'from-purple-50 to-pink-50'
   }
 ]
 
