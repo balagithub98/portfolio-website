@@ -47,7 +47,7 @@ export function OurPromise() {
         </div>
         
         <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
-          <dl className="grid max-w-xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-4">
+          <dl className="grid max-w-xl grid-cols-1 gap-x-8 gap-y-12 sm:gap-y-16 sm:grid-cols-2 lg:max-w-none lg:grid-cols-4">
             {promises.map((promise, index) => (
               <motion.div
                 key={promise.title}

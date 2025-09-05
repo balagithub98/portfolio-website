@@ -45,7 +45,7 @@ export function EndToEndServices() {
         </div>
         
         <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
-          <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
+          <div className="grid grid-cols-1 gap-6 sm:gap-8 lg:grid-cols-3">
             {services.map((service, index) => (
               <motion.div
                 key={service.title}

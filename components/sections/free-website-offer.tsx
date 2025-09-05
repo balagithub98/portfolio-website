@@ -93,13 +93,13 @@ export function FreeWebsiteOffer() {
               We'll build your website for free, and you only pay for ongoing maintenance and hosting after the first year.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button asChild size="lg">
+              <Button asChild size="lg" className="w-full sm:w-auto">
                 <Link href="/contact">
                   Claim Your Free Website
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
               </Button>
-              <Button variant="outline" size="lg" asChild>
+              <Button variant="outline" size="lg" asChild className="w-full sm:w-auto">
                 <Link href="#terms">
                   Read Terms & Conditions
                 </Link>
