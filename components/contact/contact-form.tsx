@@ -77,7 +77,11 @@ export function ContactForm() {
       initial={{ opacity: 0, x: -20 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.6 }}
-      className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100"
+      className="rounded-2xl p-8 shadow-xl border-2 border-indigo-200 backdrop-blur-xl"
+      style={{
+        background: `linear-gradient(135deg, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0.2) 100%)`,
+        boxShadow: `0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.1)`
+      }}
     >
       <h2 className="text-2xl font-bold text-gray-900 mb-6">Send us a message</h2>
       
