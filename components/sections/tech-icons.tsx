@@ -54,33 +54,33 @@ export function TechIcons() {
         {/* Endless Horizontal Scroll Animation */}
         <div className="relative overflow-hidden">
           {/* First Row - Right to Left Scroll */}
-          <div className="flex items-center gap-8 sm:gap-12 lg:gap-16 mb-8 sm:mb-12">
+          <div className="flex items-center mb-8 sm:mb-12 overflow-hidden">
             <motion.div
-              className="flex items-center gap-8 sm:gap-12 lg:gap-16"
+              className="flex items-center gap-6 sm:gap-8 lg:gap-12"
               animate={{
-                x: [0, -100 * technologies.length]
+                x: [0, -50 * technologies.length]
               }}
               transition={{
                 x: {
                   repeat: Infinity,
                   repeatType: "loop",
-                  duration: 20,
+                  duration: 30,
                   ease: "linear",
                 },
               }}
             >
               {/* Duplicate the technologies array for seamless loop */}
-              {[...technologies, ...technologies].map((tech, index) => (
+              {[...technologies, ...technologies, ...technologies].map((tech, index) => (
                 <div
                   key={`${tech.name}-${index}`}
                   className="flex-shrink-0 group relative"
                 >
-                  <div className="px-8 py-4 rounded-2xl backdrop-blur-xl border border-white/20 hover:scale-110 transition-all duration-500 hover:rotate-2"
+                  <div className="px-6 py-3 sm:px-8 sm:py-4 rounded-2xl backdrop-blur-xl border border-white/20 hover:scale-110 transition-all duration-500 hover:rotate-2"
                        style={{
                          background: `linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 50%, rgba(255,255,255,0.02) 100%)`,
                          boxShadow: `0 25px 50px -12px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.1)`
                        }}>
-                    <span className={`text-xl sm:text-2xl font-bold ${tech.color} group-hover:text-cyan-300 transition-colors duration-300`}>
+                    <span className={`text-lg sm:text-xl lg:text-2xl font-bold ${tech.color} group-hover:text-cyan-300 transition-colors duration-300 whitespace-nowrap`}>
                       {tech.name}
                     </span>
                   </div>
@@ -90,11 +90,47 @@ export function TechIcons() {
           </div>
 
           {/* Second Row - Left to Right Scroll (Reverse Direction) */}
-          <div className="flex items-center gap-8 sm:gap-12 lg:gap-16 mb-8 sm:mb-12">
+          <div className="flex items-center mb-8 sm:mb-12 overflow-hidden">
             <motion.div
-              className="flex items-center gap-8 sm:gap-12 lg:gap-16"
+              className="flex items-center gap-6 sm:gap-8 lg:gap-12"
               animate={{
-                x: [-100 * technologies.length, 0]
+                x: [-50 * technologies.length, 0]
+              }}
+              transition={{
+                x: {
+                  repeat: Infinity,
+                  repeatType: "loop",
+                  duration: 35,
+                  ease: "linear",
+                },
+              }}
+            >
+              {/* Duplicate the technologies array for seamless loop */}
+              {[...technologies, ...technologies, ...technologies].map((tech, index) => (
+                <div
+                  key={`${tech.name}-reverse-${index}`}
+                  className="flex-shrink-0 group relative"
+                >
+                  <div className="px-6 py-3 sm:px-8 sm:py-4 rounded-2xl backdrop-blur-xl border border-white/20 hover:scale-110 transition-all duration-500 hover:-rotate-2"
+                       style={{
+                         background: `linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 50%, rgba(255,255,255,0.02) 100%)`,
+                         boxShadow: `0 25px 50px -12px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.1)`
+                       }}>
+                    <span className={`text-lg sm:text-xl lg:text-2xl font-bold ${tech.color} group-hover:text-cyan-300 transition-colors duration-300 whitespace-nowrap`}>
+                      {tech.name}
+                    </span>
+                  </div>
+                </div>
+              ))}
+            </motion.div>
+          </div>
+
+          {/* Third Row - Right to Left Scroll (Faster) */}
+          <div className="flex items-center overflow-hidden">
+            <motion.div
+              className="flex items-center gap-6 sm:gap-8 lg:gap-12"
+              animate={{
+                x: [0, -50 * technologies.length]
               }}
               transition={{
                 x: {
@@ -106,53 +142,17 @@ export function TechIcons() {
               }}
             >
               {/* Duplicate the technologies array for seamless loop */}
-              {[...technologies, ...technologies].map((tech, index) => (
-                <div
-                  key={`${tech.name}-reverse-${index}`}
-                  className="flex-shrink-0 group relative"
-                >
-                  <div className="px-8 py-4 rounded-2xl backdrop-blur-xl border border-white/20 hover:scale-110 transition-all duration-500 hover:-rotate-2"
-                       style={{
-                         background: `linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 50%, rgba(255,255,255,0.02) 100%)`,
-                         boxShadow: `0 25px 50px -12px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.1)`
-                       }}>
-                    <span className={`text-xl sm:text-2xl font-bold ${tech.color} group-hover:text-cyan-300 transition-colors duration-300`}>
-                      {tech.name}
-                    </span>
-                  </div>
-                </div>
-              ))}
-            </motion.div>
-          </div>
-
-          {/* Third Row - Right to Left Scroll (Faster) */}
-          <div className="flex items-center gap-8 sm:gap-12 lg:gap-16">
-            <motion.div
-              className="flex items-center gap-8 sm:gap-12 lg:gap-16"
-              animate={{
-                x: [0, -100 * technologies.length]
-              }}
-              transition={{
-                x: {
-                  repeat: Infinity,
-                  repeatType: "loop",
-                  duration: 15,
-                  ease: "linear",
-                },
-              }}
-            >
-              {/* Duplicate the technologies array for seamless loop */}
-              {[...technologies, ...technologies].map((tech, index) => (
+              {[...technologies, ...technologies, ...technologies].map((tech, index) => (
                 <div
                   key={`${tech.name}-fast-${index}`}
                   className="flex-shrink-0 group relative"
                 >
-                  <div className="px-8 py-4 rounded-2xl backdrop-blur-xl border border-white/20 hover:scale-110 transition-all duration-500 hover:rotate-1"
+                  <div className="px-6 py-3 sm:px-8 sm:py-4 rounded-2xl backdrop-blur-xl border border-white/20 hover:scale-110 transition-all duration-500 hover:rotate-1"
                        style={{
                          background: `linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 50%, rgba(255,255,255,0.02) 100%)`,
                          boxShadow: `0 25px 50px -12px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.1)`
                        }}>
-                    <span className={`text-xl sm:text-2xl font-bold ${tech.color} group-hover:text-cyan-300 transition-colors duration-300`}>
+                    <span className={`text-lg sm:text-xl lg:text-2xl font-bold ${tech.color} group-hover:text-cyan-300 transition-colors duration-300 whitespace-nowrap`}>
                       {tech.name}
                     </span>
                   </div>
