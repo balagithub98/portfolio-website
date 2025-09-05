@@ -8,35 +8,29 @@ import { motion } from 'framer-motion'
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-indigo-200 via-purple-100 to-pink-200 py-20 sm:py-32">
-      {/* Animated background elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-purple-400/20 to-pink-400/20 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-br from-blue-400/20 to-indigo-400/20 rounded-full blur-3xl animate-pulse" style={{animationDelay: '1s'}}></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-br from-cyan-400/10 to-purple-400/10 rounded-full blur-3xl animate-pulse" style={{animationDelay: '2s'}}></div>
-      </div>
-      <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
+    <section className="section-padding-lg bg-white">
+      <div className="mx-auto max-w-6xl container-padding">
         <div className="mx-auto max-w-4xl text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
+            <h1 className="text-display text-foreground mb-8">
               <CurvedUnderline 
                 decorativeChar={DECORATIVE_CHARS.star}
-                color={COLOR_SCHEMES.purple}
+                color="#000000"
                 wordCount={3}
                 delay={0.2}
               >
                 Transform Your Business with Professional Web Services
               </CurvedUnderline>
             </h1>
-            <p className="mt-6 text-lg leading-8 text-gray-600">
+            <p className="text-body text-muted-foreground max-w-2xl mx-auto mb-12">
               Get your website for free with our comprehensive design, development, and marketing services. 
               We deliver fast, beautiful, and results-driven solutions that grow your business.
             </p>
-            <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Button asChild size="xl" className="w-full sm:w-auto">
                 <Link href="/contact">
                   Get Your Free Website
@@ -58,19 +52,18 @@ export function Hero() {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="mt-16 sm:mt-24"
+          className="mt-20 pt-16 border-t border-border"
         >
           <div className="text-center">
-            <p className="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-8">
+            <p className="text-caption uppercase tracking-wide mb-8">
               Trusted by 500+ businesses worldwide
             </p>
-            <div className="flex flex-wrap justify-center items-center gap-4 sm:gap-8 lg:gap-12 opacity-60">
-              {/* Placeholder for client logos - you can replace with actual logos */}
-              <div className="flex items-center justify-center h-6 w-20 sm:h-8 sm:w-24 bg-gray-200 rounded"></div>
-              <div className="flex items-center justify-center h-6 w-20 sm:h-8 sm:w-24 bg-gray-200 rounded"></div>
-              <div className="flex items-center justify-center h-6 w-20 sm:h-8 sm:w-24 bg-gray-200 rounded"></div>
-              <div className="flex items-center justify-center h-6 w-20 sm:h-8 sm:w-24 bg-gray-200 rounded"></div>
-              <div className="flex items-center justify-center h-6 w-20 sm:h-8 sm:w-24 bg-gray-200 rounded"></div>
+            <div className="flex flex-wrap justify-center items-center gap-8 lg:gap-12 opacity-40">
+              <div className="text-lg font-medium text-muted-foreground">Company A</div>
+              <div className="text-lg font-medium text-muted-foreground">Company B</div>
+              <div className="text-lg font-medium text-muted-foreground">Company C</div>
+              <div className="text-lg font-medium text-muted-foreground">Company D</div>
+              <div className="text-lg font-medium text-muted-foreground">Company E</div>
             </div>
           </div>
         </motion.div>

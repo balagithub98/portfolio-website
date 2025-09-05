@@ -5,15 +5,15 @@ import { useRef } from 'react'
 import { CurvedUnderline, DECORATIVE_CHARS, COLOR_SCHEMES } from '@/components/ui/curved-underline'
 
 const technologies = [
-  { name: 'Next.js', color: 'text-gray-300' },
-  { name: 'React', color: 'text-blue-300' },
-  { name: 'Tailwind CSS', color: 'text-cyan-300' },
-  { name: 'PostgreSQL', color: 'text-indigo-300' },
-  { name: 'MongoDB', color: 'text-green-300' },
-  { name: 'WordPress', color: 'text-blue-400' },
-  { name: 'Webflow', color: 'text-purple-300' },
-  { name: 'Shopify', color: 'text-green-400' },
-  { name: 'WooCommerce', color: 'text-orange-300' }
+  { name: 'Next.js' },
+  { name: 'React' },
+  { name: 'Tailwind CSS' },
+  { name: 'PostgreSQL' },
+  { name: 'MongoDB' },
+  { name: 'WordPress' },
+  { name: 'Webflow' },
+  { name: 'Shopify' },
+  { name: 'WooCommerce' }
 ]
 
 export function TechIcons() {
@@ -21,21 +21,8 @@ export function TechIcons() {
   const isVisible = useInView(ref, { once: true, amount: 0.3 })
 
   return (
-    <section className="py-24 sm:py-32 relative overflow-hidden" ref={ref}>
-      {/* Premium Aurora Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-indigo-900 via-purple-900 to-mint-400 animated-gradient"></div>
-      
-      {/* Floating Bokeh Light Effects */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-10 left-10 w-32 h-32 bg-gradient-to-r from-cyan-400/30 to-blue-400/30 rounded-full blur-xl floating-element"></div>
-        <div className="absolute top-20 right-20 w-24 h-24 bg-gradient-to-r from-purple-400/40 to-pink-400/40 rounded-full blur-lg floating-element" style={{animationDelay: '1s'}}></div>
-        <div className="absolute bottom-20 left-20 w-40 h-40 bg-gradient-to-r from-mint-400/25 to-cyan-400/25 rounded-full blur-2xl floating-element" style={{animationDelay: '2s'}}></div>
-        <div className="absolute bottom-10 right-10 w-28 h-28 bg-gradient-to-r from-indigo-400/35 to-purple-400/35 rounded-full blur-xl floating-element" style={{animationDelay: '3s'}}></div>
-        <div className="absolute top-1/2 left-1/4 w-20 h-20 bg-gradient-to-r from-pink-400/30 to-rose-400/30 rounded-full blur-lg floating-element" style={{animationDelay: '4s'}}></div>
-        <div className="absolute top-1/3 right-1/3 w-36 h-36 bg-gradient-to-r from-mint-400/20 to-emerald-400/20 rounded-full blur-3xl floating-element" style={{animationDelay: '5s'}}></div>
-      </div>
-      
-      <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
+    <section className="section-padding-lg bg-muted/30" ref={ref}>
+      <div className="mx-auto max-w-6xl container-padding">
         <div className="mx-auto max-w-2xl text-center mb-16">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -43,18 +30,17 @@ export function TechIcons() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-4xl font-bold tracking-tight text-white sm:text-5xl mb-6">
+            <h2 className="text-heading text-foreground mb-6">
               <CurvedUnderline 
                 decorativeChar={DECORATIVE_CHARS.sparkle}
-                color={COLOR_SCHEMES.cyan}
+                color="#000000"
                 wordCount={2}
                 delay={0.3}
-                className="text-white"
               >
                 Built with Modern Technologies
               </CurvedUnderline>
             </h2>
-            <p className="text-lg leading-8 text-gray-300">
+            <p className="text-body text-muted-foreground">
               We use the latest and most powerful technologies to create fast, secure, and scalable websites that deliver exceptional performance.
             </p>
           </motion.div>
@@ -84,12 +70,8 @@ export function TechIcons() {
                   key={`${tech.name}-${index}`}
                   className="flex-shrink-0 group relative"
                 >
-                  <div className="px-6 py-3 sm:px-8 sm:py-4 rounded-2xl backdrop-blur-xl border border-white/20 hover:scale-110 transition-all duration-500 hover:rotate-2"
-                       style={{
-                         background: `linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 50%, rgba(255,255,255,0.02) 100%)`,
-                         boxShadow: `0 25px 50px -12px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.1)`
-                       }}>
-                    <span className={`text-lg sm:text-xl lg:text-2xl font-bold ${tech.color} group-hover:text-cyan-300 transition-colors duration-300 whitespace-nowrap`}>
+                  <div className="minimal-card px-6 py-3 sm:px-8 sm:py-4 hover-lift">
+                    <span className="text-lg sm:text-xl lg:text-2xl font-semibold text-foreground whitespace-nowrap">
                       {tech.name}
                     </span>
                   </div>
@@ -120,12 +102,8 @@ export function TechIcons() {
                   key={`${tech.name}-reverse-${index}`}
                   className="flex-shrink-0 group relative"
                 >
-                  <div className="px-6 py-3 sm:px-8 sm:py-4 rounded-2xl backdrop-blur-xl border border-white/20 hover:scale-110 transition-all duration-500 hover:-rotate-2"
-                       style={{
-                         background: `linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 50%, rgba(255,255,255,0.02) 100%)`,
-                         boxShadow: `0 25px 50px -12px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.1)`
-                       }}>
-                    <span className={`text-lg sm:text-xl lg:text-2xl font-bold ${tech.color} group-hover:text-cyan-300 transition-colors duration-300 whitespace-nowrap`}>
+                  <div className="minimal-card px-6 py-3 sm:px-8 sm:py-4 hover-lift">
+                    <span className="text-lg sm:text-xl lg:text-2xl font-semibold text-foreground whitespace-nowrap">
                       {tech.name}
                     </span>
                   </div>
@@ -156,12 +134,8 @@ export function TechIcons() {
                   key={`${tech.name}-fast-${index}`}
                   className="flex-shrink-0 group relative"
                 >
-                  <div className="px-6 py-3 sm:px-8 sm:py-4 rounded-2xl backdrop-blur-xl border border-white/20 hover:scale-110 transition-all duration-500 hover:rotate-1"
-                       style={{
-                         background: `linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 50%, rgba(255,255,255,0.02) 100%)`,
-                         boxShadow: `0 25px 50px -12px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.1)`
-                       }}>
-                    <span className={`text-lg sm:text-xl lg:text-2xl font-bold ${tech.color} group-hover:text-cyan-300 transition-colors duration-300 whitespace-nowrap`}>
+                  <div className="minimal-card px-6 py-3 sm:px-8 sm:py-4 hover-lift">
+                    <span className="text-lg sm:text-xl lg:text-2xl font-semibold text-foreground whitespace-nowrap">
                       {tech.name}
                     </span>
                   </div>
