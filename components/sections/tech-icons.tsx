@@ -51,93 +51,114 @@ export function TechIcons() {
           </motion.div>
         </div>
 
-        {/* Simplified Technology Names with Enhanced Zigzag Animation */}
-        <div className="relative">
-          {/* Row 1 - Left to Right with Staggered Animation */}
-          <div className="flex flex-wrap justify-center items-center gap-8 sm:gap-12 lg:gap-16 mb-8 sm:mb-12 overflow-hidden">
-            {technologies.slice(0, 3).map((tech, index) => (
-              <motion.div
-                key={tech.name}
-                initial={{ opacity: 0, x: -150, y: -50, rotate: -15 }}
-                animate={isVisible ? { opacity: 1, x: 0, y: 0, rotate: 0 } : { opacity: 0, x: -150, y: -50, rotate: -15 }}
-                transition={{ 
-                  duration: 1.2, 
-                  delay: index * 0.4,
-                  ease: [0.25, 0.46, 0.45, 0.94],
-                  type: "spring",
-                  stiffness: 100
-                }}
-                className="group relative"
-              >
-                <div className="px-8 py-4 rounded-2xl backdrop-blur-xl border border-white/20 hover:scale-110 transition-all duration-500 hover:rotate-2"
-                     style={{
-                       background: `linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 50%, rgba(255,255,255,0.02) 100%)`,
-                       boxShadow: `0 25px 50px -12px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.1)`
-                     }}>
-                  <span className={`text-xl sm:text-2xl font-bold ${tech.color} group-hover:text-cyan-300 transition-colors duration-300`}>
-                    {tech.name}
-                  </span>
+        {/* Endless Horizontal Scroll Animation */}
+        <div className="relative overflow-hidden">
+          {/* First Row - Right to Left Scroll */}
+          <div className="flex items-center gap-8 sm:gap-12 lg:gap-16 mb-8 sm:mb-12">
+            <motion.div
+              className="flex items-center gap-8 sm:gap-12 lg:gap-16"
+              animate={{
+                x: [0, -100 * technologies.length]
+              }}
+              transition={{
+                x: {
+                  repeat: Infinity,
+                  repeatType: "loop",
+                  duration: 20,
+                  ease: "linear",
+                },
+              }}
+            >
+              {/* Duplicate the technologies array for seamless loop */}
+              {[...technologies, ...technologies].map((tech, index) => (
+                <div
+                  key={`${tech.name}-${index}`}
+                  className="flex-shrink-0 group relative"
+                >
+                  <div className="px-8 py-4 rounded-2xl backdrop-blur-xl border border-white/20 hover:scale-110 transition-all duration-500 hover:rotate-2"
+                       style={{
+                         background: `linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 50%, rgba(255,255,255,0.02) 100%)`,
+                         boxShadow: `0 25px 50px -12px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.1)`
+                       }}>
+                    <span className={`text-xl sm:text-2xl font-bold ${tech.color} group-hover:text-cyan-300 transition-colors duration-300`}>
+                      {tech.name}
+                    </span>
+                  </div>
                 </div>
-              </motion.div>
-            ))}
+              ))}
+            </motion.div>
           </div>
 
-          {/* Row 2 - Right to Left with Enhanced Zigzag */}
-          <div className="flex flex-wrap justify-center items-center gap-8 sm:gap-12 lg:gap-16 mb-8 sm:mb-12 overflow-hidden">
-            {technologies.slice(3, 6).map((tech, index) => (
-              <motion.div
-                key={tech.name}
-                initial={{ opacity: 0, x: 150, y: 50, rotate: 15 }}
-                animate={isVisible ? { opacity: 1, x: 0, y: 0, rotate: 0 } : { opacity: 0, x: 150, y: 50, rotate: 15 }}
-                transition={{ 
-                  duration: 1.2, 
-                  delay: (index + 3) * 0.4,
-                  ease: [0.25, 0.46, 0.45, 0.94],
-                  type: "spring",
-                  stiffness: 100
-                }}
-                className="group relative"
-              >
-                <div className="px-8 py-4 rounded-2xl backdrop-blur-xl border border-white/20 hover:scale-110 transition-all duration-500 hover:-rotate-2"
-                     style={{
-                       background: `linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 50%, rgba(255,255,255,0.02) 100%)`,
-                       boxShadow: `0 25px 50px -12px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.1)`
-                     }}>
-                  <span className={`text-xl sm:text-2xl font-bold ${tech.color} group-hover:text-cyan-300 transition-colors duration-300`}>
-                    {tech.name}
-                  </span>
+          {/* Second Row - Left to Right Scroll (Reverse Direction) */}
+          <div className="flex items-center gap-8 sm:gap-12 lg:gap-16 mb-8 sm:mb-12">
+            <motion.div
+              className="flex items-center gap-8 sm:gap-12 lg:gap-16"
+              animate={{
+                x: [-100 * technologies.length, 0]
+              }}
+              transition={{
+                x: {
+                  repeat: Infinity,
+                  repeatType: "loop",
+                  duration: 25,
+                  ease: "linear",
+                },
+              }}
+            >
+              {/* Duplicate the technologies array for seamless loop */}
+              {[...technologies, ...technologies].map((tech, index) => (
+                <div
+                  key={`${tech.name}-reverse-${index}`}
+                  className="flex-shrink-0 group relative"
+                >
+                  <div className="px-8 py-4 rounded-2xl backdrop-blur-xl border border-white/20 hover:scale-110 transition-all duration-500 hover:-rotate-2"
+                       style={{
+                         background: `linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 50%, rgba(255,255,255,0.02) 100%)`,
+                         boxShadow: `0 25px 50px -12px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.1)`
+                       }}>
+                    <span className={`text-xl sm:text-2xl font-bold ${tech.color} group-hover:text-cyan-300 transition-colors duration-300`}>
+                      {tech.name}
+                    </span>
+                  </div>
                 </div>
-              </motion.div>
-            ))}
+              ))}
+            </motion.div>
           </div>
 
-          {/* Row 3 - Left to Right with Final Zigzag */}
-          <div className="flex flex-wrap justify-center items-center gap-8 sm:gap-12 lg:gap-16 overflow-hidden">
-            {technologies.slice(6, 9).map((tech, index) => (
-              <motion.div
-                key={tech.name}
-                initial={{ opacity: 0, x: -150, y: -30, rotate: -10 }}
-                animate={isVisible ? { opacity: 1, x: 0, y: 0, rotate: 0 } : { opacity: 0, x: -150, y: -30, rotate: -10 }}
-                transition={{ 
-                  duration: 1.2, 
-                  delay: (index + 6) * 0.4,
-                  ease: [0.25, 0.46, 0.45, 0.94],
-                  type: "spring",
-                  stiffness: 100
-                }}
-                className="group relative"
-              >
-                <div className="px-8 py-4 rounded-2xl backdrop-blur-xl border border-white/20 hover:scale-110 transition-all duration-500 hover:rotate-1"
-                     style={{
-                       background: `linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 50%, rgba(255,255,255,0.02) 100%)`,
-                       boxShadow: `0 25px 50px -12px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.1)`
-                     }}>
-                  <span className={`text-xl sm:text-2xl font-bold ${tech.color} group-hover:text-cyan-300 transition-colors duration-300`}>
-                    {tech.name}
-                  </span>
+          {/* Third Row - Right to Left Scroll (Faster) */}
+          <div className="flex items-center gap-8 sm:gap-12 lg:gap-16">
+            <motion.div
+              className="flex items-center gap-8 sm:gap-12 lg:gap-16"
+              animate={{
+                x: [0, -100 * technologies.length]
+              }}
+              transition={{
+                x: {
+                  repeat: Infinity,
+                  repeatType: "loop",
+                  duration: 15,
+                  ease: "linear",
+                },
+              }}
+            >
+              {/* Duplicate the technologies array for seamless loop */}
+              {[...technologies, ...technologies].map((tech, index) => (
+                <div
+                  key={`${tech.name}-fast-${index}`}
+                  className="flex-shrink-0 group relative"
+                >
+                  <div className="px-8 py-4 rounded-2xl backdrop-blur-xl border border-white/20 hover:scale-110 transition-all duration-500 hover:rotate-1"
+                       style={{
+                         background: `linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 50%, rgba(255,255,255,0.02) 100%)`,
+                         boxShadow: `0 25px 50px -12px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.1)`
+                       }}>
+                    <span className={`text-xl sm:text-2xl font-bold ${tech.color} group-hover:text-cyan-300 transition-colors duration-300`}>
+                      {tech.name}
+                    </span>
+                  </div>
                 </div>
-              </motion.div>
-            ))}
+              ))}
+            </motion.div>
           </div>
         </div>
 
