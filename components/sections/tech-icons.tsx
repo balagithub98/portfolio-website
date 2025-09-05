@@ -2,6 +2,7 @@
 
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
+import { CurvedUnderline, DECORATIVE_CHARS, COLOR_SCHEMES } from '@/components/ui/curved-underline'
 
 const technologies = [
   { name: 'Next.js', color: 'text-gray-300' },
@@ -43,7 +44,15 @@ export function TechIcons() {
             viewport={{ once: true }}
           >
             <h2 className="text-4xl font-bold tracking-tight text-white sm:text-5xl mb-6">
-              Built with <span className="bg-gradient-to-r from-cyan-400 to-mint-400 bg-clip-text text-transparent">Modern Technologies</span>
+              <CurvedUnderline 
+                decorativeChar={DECORATIVE_CHARS.sparkle}
+                color={COLOR_SCHEMES.cyan}
+                wordCount={2}
+                delay={0.3}
+                className="text-white"
+              >
+                Built with Modern Technologies
+              </CurvedUnderline>
             </h2>
             <p className="text-lg leading-8 text-gray-300">
               We use the latest and most powerful technologies to create fast, secure, and scalable websites that deliver exceptional performance.

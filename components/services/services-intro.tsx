@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { CurvedUnderline, DECORATIVE_CHARS, COLOR_SCHEMES } from '@/components/ui/curved-underline'
 
 export function ServicesIntro() {
   return (
@@ -20,7 +21,14 @@ export function ServicesIntro() {
             transition={{ duration: 0.6 }}
           >
             <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
-              Our <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Services</span>
+              <CurvedUnderline 
+                decorativeChar={DECORATIVE_CHARS.diamond}
+                color={COLOR_SCHEMES.blue}
+                wordCount={1}
+                delay={0.2}
+              >
+                Our Services
+              </CurvedUnderline>
             </h1>
             <p className="mt-6 text-lg leading-8 text-gray-600">
               We provide comprehensive digital solutions to help your business thrive online. 

@@ -1,6 +1,7 @@
 'use client'
 
 import { Button } from '@/components/ui/button'
+import { CurvedUnderline, DECORATIVE_CHARS, COLOR_SCHEMES } from '@/components/ui/curved-underline'
 import Link from 'next/link'
 import { ArrowRight, Play } from 'lucide-react'
 import { motion } from 'framer-motion'
@@ -22,8 +23,14 @@ export function Hero() {
             transition={{ duration: 0.6 }}
           >
             <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
-              Transform Your Business with{' '}
-              <span className="bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">Professional Web Services</span>
+              <CurvedUnderline 
+                decorativeChar={DECORATIVE_CHARS.star}
+                color={COLOR_SCHEMES.purple}
+                wordCount={3}
+                delay={0.2}
+              >
+                Transform Your Business with Professional Web Services
+              </CurvedUnderline>
             </h1>
             <p className="mt-6 text-lg leading-8 text-gray-600">
               Get your website for free with our comprehensive design, development, and marketing services. 
