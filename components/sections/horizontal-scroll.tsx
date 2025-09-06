@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect, useRef } from 'react'
-import { motion, useScroll, useTransform, useSpring } from 'framer-motion'
+import { motion, useScroll, useTransform, useSpring, useMotionValue } from 'framer-motion'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 
 const panels = [
@@ -72,9 +72,15 @@ export function HorizontalScroll() {
     offset: ["start start", "end start"]
   })
 
-  // Create horizontal movement based on current panel
-  const panelX = useTransform(currentPanel, [0, 1, 2], ["0%", "-100%", "-200%"])
-  const smoothX = useSpring(panelX, { stiffness: 100, damping: 30, restDelta: 0.001 })
+  // Create a motion value for horizontal position
+  const x = useMotionValue(0)
+  const smoothX = useSpring(x, { stiffness: 100, damping: 30, restDelta: 0.001 })
+
+  // Update horizontal position when panel changes
+  useEffect(() => {
+    const targetX = -currentPanel * 100
+    x.set(targetX)
+  }, [currentPanel, x])
 
   // Handle keyboard navigation
   useEffect(() => {
@@ -135,18 +141,6 @@ export function HorizontalScroll() {
       }
     })
     return unsubscribe
-  }, [scrollYProgress])
-
-  // Also update panel on initial load
-  useEffect(() => {
-    const progress = scrollYProgress.get()
-    if (progress < 0.33) {
-      setCurrentPanel(0)
-    } else if (progress < 0.66) {
-      setCurrentPanel(1)
-    } else {
-      setCurrentPanel(2)
-    }
   }, [scrollYProgress])
 
   return (
@@ -222,6 +216,10 @@ export function HorizontalScroll() {
             style={{ x: smoothX }}
             className="flex h-full"
           >
+            {/* Debug indicator to show movement */}
+            <div className="absolute top-4 left-4 z-10 bg-red-500 text-white px-2 py-1 text-xs">
+              Panel {currentPanel + 1} | X: {Math.round(x.get())}%
+            </div>
             {panels.map((panel, index) => (
               <div
                 key={panel.id}
@@ -300,7 +298,7 @@ export function HorizontalScroll() {
           Progress: {Math.round(scrollYProgress.get() * 100)}% | Panel: {currentPanel + 1}/3
         </p>
         <p className="text-xs text-muted-foreground">
-          X Position: {Math.round(parseFloat(smoothX.get().toString().replace('%', '')))}%
+          X Position: {Math.round(x.get())}%
         </p>
         <div className="flex gap-2 mt-2">
           <button 
