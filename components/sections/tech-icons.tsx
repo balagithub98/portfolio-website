@@ -237,7 +237,12 @@ export function TechIcons() {
                     <img
                       src={tech.logo}
                       alt={tech.alt}
-                      className="w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 object-contain"
+                      className="w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 object-contain object-center"
+                      style={{ 
+                        display: 'block',
+                        margin: 'auto',
+                        verticalAlign: 'middle'
+                      }}
                       loading="lazy"
                       onError={(e) => {
                         // Fallback to text if image fails to load
@@ -245,7 +250,7 @@ export function TechIcons() {
                         target.style.display = 'none';
                         const parent = target.parentElement;
                         if (parent) {
-                          parent.innerHTML = `<span class="text-xs sm:text-sm lg:text-base font-bold text-gray-700">${tech.name}</span>`;
+                          parent.innerHTML = `<span class="text-xs sm:text-sm lg:text-base font-bold text-gray-700 flex items-center justify-center h-full">${tech.name}</span>`;
                         }
                       }}
                     />
@@ -286,7 +291,12 @@ export function TechIcons() {
                     <img
                       src={tech.logo}
                       alt={tech.alt}
-                      className="w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 object-contain"
+                      className="w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 object-contain object-center"
+                      style={{ 
+                        display: 'block',
+                        margin: 'auto',
+                        verticalAlign: 'middle'
+                      }}
                       loading="lazy"
                       onError={(e) => {
                         // Fallback to text if image fails to load
@@ -294,7 +304,7 @@ export function TechIcons() {
                         target.style.display = 'none';
                         const parent = target.parentElement;
                         if (parent) {
-                          parent.innerHTML = `<span class="text-xs sm:text-sm lg:text-base font-bold text-gray-700">${tech.name}</span>`;
+                          parent.innerHTML = `<span class="text-xs sm:text-sm lg:text-base font-bold text-gray-700 flex items-center justify-center h-full">${tech.name}</span>`;
                         }
                       }}
                     />
@@ -335,7 +345,12 @@ export function TechIcons() {
                     <img
                       src={tech.logo}
                       alt={tech.alt}
-                      className="w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 object-contain"
+                      className="w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 object-contain object-center"
+                      style={{ 
+                        display: 'block',
+                        margin: 'auto',
+                        verticalAlign: 'middle'
+                      }}
                       loading="lazy"
                       onError={(e) => {
                         // Fallback to text if image fails to load
@@ -343,7 +358,7 @@ export function TechIcons() {
                         target.style.display = 'none';
                         const parent = target.parentElement;
                         if (parent) {
-                          parent.innerHTML = `<span class="text-xs sm:text-sm lg:text-base font-bold text-gray-700">${tech.name}</span>`;
+                          parent.innerHTML = `<span class="text-xs sm:text-sm lg:text-base font-bold text-gray-700 flex items-center justify-center h-full">${tech.name}</span>`;
                         }
                       }}
                     />
