@@ -26,7 +26,11 @@ export default function DemoPage() {
       </section>
 
       {/* Horizontal scroll section */}
-      <HorizontalScroll />
+      <section className="horizontal-section relative h-screen overflow-hidden">
+        <div className="flex h-full w-max">
+          <HorizontalScroll />
+        </div>
+      </section>
 
       {/* Normal vertical section after */}
       <section className="py-24 sm:py-32 bg-muted/20">

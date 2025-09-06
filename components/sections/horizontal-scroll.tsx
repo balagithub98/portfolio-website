@@ -1,367 +1,139 @@
 'use client'
 
-import { useState, useEffect, useRef, useCallback } from 'react'
-import { motion, useScroll, useTransform, useSpring, useMotionValue } from 'framer-motion'
-import { ChevronLeft, ChevronRight } from 'lucide-react'
-import { useInView } from 'react-intersection-observer'
-
-const panels = [
-  {
-    id: 'design',
-    title: 'Design',
-    sections: [
-      {
-        title: 'Discovery',
-        description: 'We research your business, target audience, and competitors to create a strategic foundation.'
-      },
-      {
-        title: 'Design',
-        description: 'Our designers create beautiful, user-friendly interfaces that reflect your brand and convert visitors.'
-      },
-      {
-        title: 'Delivery',
-        description: 'We deliver pixel-perfect designs with detailed specifications and style guides.'
-      }
-    ]
-  },
-  {
-    id: 'development',
-    title: 'Development',
-    sections: [
-      {
-        title: 'Planning',
-        description: 'We create a detailed development roadmap with timelines, milestones, and technical specifications.'
-      },
-      {
-        title: 'Development & Testing',
-        description: 'Our developers build your website using modern technologies with rigorous testing at every step.'
-      },
-      {
-        title: 'Launch & Maintenance',
-        description: 'We handle deployment, monitoring, and ongoing maintenance to keep your site running smoothly.'
-      }
-    ]
-  },
-  {
-    id: 'marketing',
-    title: 'Marketing',
-    sections: [
-      {
-        title: 'Setup',
-        description: 'We establish your marketing foundation with analytics, tracking, and goal configuration.'
-      },
-      {
-        title: 'Optimization',
-        description: 'Continuous optimization of your campaigns, content, and user experience for maximum results.'
-      },
-      {
-        title: 'Growth',
-        description: 'Scale your success with advanced strategies and data-driven decisions for sustainable growth.'
-      }
-    ]
-  }
-]
+import { useEffect, useRef } from "react"
+import { gsap } from "gsap"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
 
 export function HorizontalScroll() {
-  const [currentPanel, setCurrentPanel] = useState(0)
-  const [isInView, setIsInView] = useState(false)
   const containerRef = useRef<HTMLDivElement>(null)
-  const scrollRef = useRef<HTMLDivElement>(null)
-  
-  // Use intersection observer to detect when section is in view
-  const { ref: inViewRef, inView } = useInView({
-    threshold: 0.1,
-    triggerOnce: false
-  })
 
-  // Create a motion value for horizontal position
-  const x = useMotionValue(0)
-  const smoothX = useSpring(x, { stiffness: 100, damping: 30, restDelta: 0.001 })
-
-  // Update horizontal position when panel changes
   useEffect(() => {
-    const targetX = -currentPanel * 100
-    console.log('Setting X position to:', targetX, 'for panel:', currentPanel)
-    x.set(targetX)
-  }, [currentPanel, x])
+    gsap.registerPlugin(ScrollTrigger)
 
-  // Handle scroll-based panel switching
-  useEffect(() => {
-    if (!inView) return
+    const panels = gsap.utils.toArray(".panel")
 
-    const handleScroll = () => {
-      if (!containerRef.current) return
+    gsap.to(panels, {
+      xPercent: -100 * (panels.length - 1),
+      ease: "none",
+      scrollTrigger: {
+        trigger: ".horizontal-section",
+        pin: true,
+        scrub: true,
+        start: "top top",
+        end: () => "+=" + window.innerWidth * (panels.length - 1),
+      },
+    })
 
-      const rect = containerRef.current.getBoundingClientRect()
-      const scrollTop = window.scrollY
-      const elementTop = rect.top + scrollTop
-      const elementHeight = rect.height
-      const viewportHeight = window.innerHeight
-      
-      // Calculate scroll progress through the element
-      const elementStart = elementTop
-      const elementEnd = elementTop + elementHeight
-      const currentScroll = scrollTop + viewportHeight / 2
-      
-      const progress = Math.max(0, Math.min(1, (currentScroll - elementStart) / (elementEnd - elementStart)))
-      
-      console.log('Scroll progress:', progress)
-      
-      // Update panel based on progress
-      if (progress < 0.33) {
-        setCurrentPanel(0) // Design
-      } else if (progress < 0.66) {
-        setCurrentPanel(1) // Development
-      } else {
-        setCurrentPanel(2) // Marketing
-      }
-    }
-
-    // Initial check
-    handleScroll()
-    
-    // Listen to scroll events
-    window.addEventListener('scroll', handleScroll, { passive: true })
-    window.addEventListener('resize', handleScroll, { passive: true })
-    
+    // Cleanup
     return () => {
-      window.removeEventListener('scroll', handleScroll)
-      window.removeEventListener('resize', handleScroll)
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill())
     }
-  }, [inView])
+  }, [])
 
-  // Handle keyboard navigation
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (!inView) return
-      
-      if (e.key === 'ArrowLeft' && currentPanel > 0) {
-        e.preventDefault()
-        setCurrentPanel(prev => prev - 1)
-      } else if (e.key === 'ArrowRight' && currentPanel < panels.length - 1) {
-        e.preventDefault()
-        setCurrentPanel(prev => prev + 1)
-      }
-    }
-
-    window.addEventListener('keydown', handleKeyDown)
-    return () => window.removeEventListener('keydown', handleKeyDown)
-  }, [currentPanel, inView])
-
-  // Handle touch/swipe
-  const [touchStart, setTouchStart] = useState<number | null>(null)
-  const [touchEnd, setTouchEnd] = useState<number | null>(null)
-
-  const minSwipeDistance = 50
-
-  const onTouchStart = (e: React.TouchEvent) => {
-    setTouchEnd(null)
-    setTouchStart(e.targetTouches[0].clientX)
-  }
-
-  const onTouchMove = (e: React.TouchEvent) => {
-    setTouchEnd(e.targetTouches[0].clientX)
-  }
-
-  const onTouchEnd = () => {
-    if (!touchStart || !touchEnd) return
-    
-    const distance = touchStart - touchEnd
-    const isLeftSwipe = distance > minSwipeDistance
-    const isRightSwipe = distance < -minSwipeDistance
-
-    if (isLeftSwipe && currentPanel < panels.length - 1) {
-      setCurrentPanel(prev => prev + 1)
-    }
-    if (isRightSwipe && currentPanel > 0) {
-      setCurrentPanel(prev => prev - 1)
-    }
-  }
+  const Box = ({ title, text }: { title: string; text: string }) => (
+    <div className="minimal-card p-8 hover-lift">
+      <h3 className="text-subheading text-foreground mb-4">{title}</h3>
+      <p className="text-body text-muted-foreground leading-relaxed">{text}</p>
+    </div>
+  )
 
   return (
-    <section className="relative" ref={inViewRef}>
-      {/* Current Panel Indicator */}
-      <div className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50">
-        <div className="bg-background/90 border border-border rounded-lg px-4 py-2">
-          <p className="text-sm font-medium text-foreground text-center">
-            {panels[currentPanel]?.title} Process
-          </p>
+    <div className="w-full">
+      {/* Design Title Panel */}
+      <div className="panel w-screen h-screen bg-background text-foreground flex items-center justify-center p-12">
+        <h2 className="text-display text-foreground">Design</h2>
+      </div>
+
+      {/* Design Grid Panel */}
+      <div className="panel w-screen h-screen bg-muted/20 text-foreground p-12 flex flex-col items-center justify-center">
+        <h2 className="text-display text-foreground mb-16">Design Process</h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-6xl">
+          <Box
+            title="Discovery"
+            text="We research your business, target audience, and competitors to create a strategic foundation."
+          />
+          <Box
+            title="Design"
+            text="Our designers create beautiful, user-friendly interfaces that reflect your brand and convert visitors."
+          />
+          <Box
+            title="Delivery"
+            text="We deliver pixel-perfect designs with detailed specifications and style guides."
+          />
         </div>
       </div>
 
-      {/* Debug Progress Indicator */}
-      <div className="fixed top-4 left-4 z-50 bg-background/90 border border-border rounded-lg px-3 py-2">
-        <p className="text-xs text-muted-foreground">
-          Panel: {currentPanel + 1}/3 | InView: {inView ? 'Yes' : 'No'}
-        </p>
-        <p className="text-xs text-muted-foreground">
-          X Position: {Math.round(x.get())}%
-        </p>
-        <div className="flex gap-2 mt-2">
-          <button 
-            onClick={() => setCurrentPanel(0)}
-            className={`text-xs px-2 py-1 rounded ${
-              currentPanel === 0 ? 'bg-accent text-background' : 'bg-accent/10 hover:bg-accent/20'
-            }`}
-          >
-            Design
-          </button>
-          <button 
-            onClick={() => setCurrentPanel(1)}
-            className={`text-xs px-2 py-1 rounded ${
-              currentPanel === 1 ? 'bg-accent text-background' : 'bg-accent/10 hover:bg-accent/20'
-            }`}
-          >
-            Dev
-          </button>
-          <button 
-            onClick={() => setCurrentPanel(2)}
-            className={`text-xs px-2 py-1 rounded ${
-              currentPanel === 2 ? 'bg-accent text-background' : 'bg-accent/10 hover:bg-accent/20'
-            }`}
-          >
-            Marketing
-          </button>
+      {/* Development Title Panel */}
+      <div className="panel w-screen h-screen bg-background text-foreground flex items-center justify-center p-12">
+        <h2 className="text-display text-foreground">Development</h2>
+      </div>
+
+      {/* Development Grid Panel */}
+      <div className="panel w-screen h-screen bg-muted/20 text-foreground p-12 flex flex-col items-center justify-center">
+        <h2 className="text-display text-foreground mb-16">Development Process</h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-6xl">
+          <Box
+            title="Planning"
+            text="We create a detailed development roadmap with timelines, milestones, and technical specifications."
+          />
+          <Box
+            title="Development & Testing"
+            text="Our developers build your website using modern technologies with rigorous testing at every step."
+          />
+          <Box
+            title="Launch & Maintenance"
+            text="We handle deployment, monitoring, and ongoing maintenance to keep your site running smoothly."
+          />
         </div>
       </div>
 
-      {/* Progress Indicator */}
-      <div className="fixed top-1/2 right-8 z-50 transform -translate-y-1/2">
-        <div className="flex flex-col space-y-3">
-          {panels.map((panel, index) => (
-            <div key={index} className="flex flex-col items-center space-y-2">
-              <button
-                onClick={() => setCurrentPanel(index)}
-                className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                  index === currentPanel 
-                    ? 'bg-accent scale-125' 
-                    : 'bg-muted-foreground/30 hover:bg-muted-foreground/50'
-                }`}
-                aria-label={`Go to ${panel.title} panel`}
-              />
-              <span className={`text-xs transition-all duration-300 ${
-                index === currentPanel 
-                  ? 'text-accent font-medium' 
-                  : 'text-muted-foreground/50'
-              }`}>
-                {panel.title}
-              </span>
-            </div>
-          ))}
+      {/* Marketing Title Panel */}
+      <div className="panel w-screen h-screen bg-background text-foreground flex items-center justify-center p-12">
+        <h2 className="text-display text-foreground">Marketing</h2>
+      </div>
+
+      {/* Marketing Grid Panel */}
+      <div className="panel w-screen h-screen bg-muted/20 text-foreground p-12 flex flex-col items-center justify-center">
+        <h2 className="text-display text-foreground mb-16">Marketing Process</h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-6xl">
+          <Box
+            title="Setup"
+            text="We establish your marketing foundation with analytics, tracking, and goal configuration."
+          />
+          <Box
+            title="Optimization"
+            text="Continuous optimization of your campaigns, content, and user experience for maximum results."
+          />
+          <Box
+            title="Growth"
+            text="Scale your success with advanced strategies and data-driven decisions for sustainable growth."
+          />
         </div>
       </div>
 
-      {/* Navigation Arrows */}
-      <div className="fixed top-1/2 left-8 z-50 transform -translate-y-1/2">
-        <button
-          onClick={() => setCurrentPanel(prev => Math.max(0, prev - 1))}
-          disabled={currentPanel === 0}
-          className={`p-3 rounded-full transition-all duration-300 ${
-            currentPanel === 0 
-              ? 'bg-muted-foreground/20 text-muted-foreground/50 cursor-not-allowed' 
-              : 'bg-background/80 text-foreground hover:bg-background shadow-lg border border-border'
-          }`}
-          aria-label="Previous panel"
-        >
-          <ChevronLeft className="w-6 h-6" />
-        </button>
+      {/* SEO Title Panel */}
+      <div className="panel w-screen h-screen bg-background text-foreground flex items-center justify-center p-12">
+        <h2 className="text-display text-foreground">SEO</h2>
       </div>
 
-      <div className="fixed top-1/2 right-20 z-50 transform -translate-y-1/2">
-        <button
-          onClick={() => setCurrentPanel(prev => Math.min(panels.length - 1, prev + 1))}
-          disabled={currentPanel === panels.length - 1}
-          className={`p-3 rounded-full transition-all duration-300 ${
-            currentPanel === panels.length - 1 
-              ? 'bg-muted-foreground/20 text-muted-foreground/50 cursor-not-allowed' 
-              : 'bg-background/80 text-foreground hover:bg-background shadow-lg border border-border'
-          }`}
-          aria-label="Next panel"
-        >
-          <ChevronRight className="w-6 h-6" />
-        </button>
-      </div>
-
-      {/* Horizontal Scroll Container */}
-      <div 
-        ref={containerRef}
-        className="h-[500vh] relative"
-        onTouchStart={onTouchStart}
-        onTouchMove={onTouchMove}
-        onTouchEnd={onTouchEnd}
-      >
-        <div className="sticky top-0 h-screen overflow-hidden">
-          <motion.div
-            ref={scrollRef}
-            style={{ x: smoothX }}
-            className="flex h-full"
-          >
-            {/* Debug indicator to show movement */}
-            <div className="absolute top-4 left-4 z-10 bg-red-500 text-white px-2 py-1 text-xs">
-              Panel {currentPanel + 1} | X: {Math.round(x.get())}%
-            </div>
-            {panels.map((panel, index) => (
-              <div
-                key={panel.id}
-                className={`w-screen h-screen flex-shrink-0 flex items-center justify-center ${
-                  index === currentPanel ? 'bg-background' : 'bg-muted/10'
-                }`}
-              >
-                <div className="max-w-6xl mx-auto px-6 lg:px-8">
-                  <motion.div
-                    initial={{ opacity: 0, y: 50 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.2 }}
-                    className="text-center"
-                  >
-                    <h2 className="text-display text-foreground mb-16">
-                      {panel.title} {index === currentPanel && <span className="text-accent">(ACTIVE)</span>}
-                    </h2>
-                    
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                      {panel.sections.map((section, sectionIndex) => (
-                        <motion.div
-                          key={section.title}
-                          initial={{ opacity: 0, y: 30 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          transition={{ 
-                            duration: 0.6, 
-                            delay: 0.4 + (sectionIndex * 0.1) 
-                          }}
-                          className="minimal-card p-8 hover-lift"
-                        >
-                          <h3 className="text-subheading text-foreground mb-4">
-                            {section.title}
-                          </h3>
-                          <p className="text-body text-muted-foreground leading-relaxed">
-                            {section.description}
-                          </p>
-                        </motion.div>
-                      ))}
-                    </div>
-                  </motion.div>
-                </div>
-              </div>
-            ))}
-          </motion.div>
+      {/* SEO Grid Panel */}
+      <div className="panel w-screen h-screen bg-muted/20 text-foreground p-12 flex flex-col items-center justify-center">
+        <h2 className="text-display text-foreground mb-16">SEO Process</h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-6xl">
+          <Box
+            title="Keyword Research"
+            text="We analyze and identify the right keywords to target your ideal audience effectively."
+          />
+          <Box
+            title="On-Page Optimization"
+            text="We optimize your website structure, content, and meta tags to improve search rankings."
+          />
+          <Box
+            title="Link Building"
+            text="We create high-quality backlinks to increase your website authority and visibility."
+          />
         </div>
       </div>
-
-      {/* Instructions */}
-      <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-50">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1 }}
-          className="bg-background/90 backdrop-blur-sm border border-border rounded-lg px-4 py-2"
-        >
-          <p className="text-caption text-muted-foreground text-center">
-            {currentPanel === 0 && "Scroll down to explore Design process"}
-            {currentPanel === 1 && "Continue scrolling to see Development workflow"}
-            {currentPanel === 2 && "Final section - scroll to continue to next page section"}
-          </p>
-        </motion.div>
-      </div>
-    </section>
+    </div>
   )
 }
