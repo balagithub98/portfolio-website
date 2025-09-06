@@ -108,9 +108,9 @@ export function TechIcons() {
         {/* Endless Horizontal Scroll Animation */}
         <div className="relative overflow-hidden" role="region" aria-label="Technology logos carousel">
           {/* First Row - Right to Left Scroll */}
-          <div className="flex items-center mb-8 sm:mb-12 overflow-hidden" aria-hidden="true">
+          <div className="flex items-center mb-6 sm:mb-8 overflow-hidden" aria-hidden="true">
             <motion.div
-              className="flex items-center gap-6 sm:gap-8 lg:gap-12"
+              className="flex items-center gap-8 sm:gap-12 lg:gap-16"
               animate={{
                 x: [0, -100 * technologies.length]
               }}
@@ -130,7 +130,7 @@ export function TechIcons() {
                   className="flex-shrink-0 group relative"
                 >
                   <div 
-                    className="px-4 py-3 sm:px-6 sm:py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 backdrop-blur-sm border border-white/20 flex items-center justify-center"
+                    className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 backdrop-blur-sm border border-white/20 flex items-center justify-center"
                     style={{
                       background: `linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.7) 100%)`
                     }}
@@ -138,7 +138,7 @@ export function TechIcons() {
                     <img
                       src={tech.logo}
                       alt={tech.alt}
-                      className="h-8 w-8 sm:h-10 sm:w-10 lg:h-12 lg:w-12 object-contain"
+                      className="w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 object-contain"
                       loading="lazy"
                       onError={(e) => {
                         // Fallback to text if image fails to load
@@ -146,7 +146,7 @@ export function TechIcons() {
                         target.style.display = 'none';
                         const parent = target.parentElement;
                         if (parent) {
-                          parent.innerHTML = `<span class="text-sm sm:text-base lg:text-lg font-bold text-gray-700">${tech.name}</span>`;
+                          parent.innerHTML = `<span class="text-xs sm:text-sm lg:text-base font-bold text-gray-700">${tech.name}</span>`;
                         }
                       }}
                     />
@@ -157,9 +157,9 @@ export function TechIcons() {
           </div>
 
           {/* Second Row - Left to Right Scroll (Reverse Direction) */}
-          <div className="flex items-center mb-8 sm:mb-12 overflow-hidden" aria-hidden="true">
+          <div className="flex items-center mb-6 sm:mb-8 overflow-hidden" aria-hidden="true">
             <motion.div
-              className="flex items-center gap-6 sm:gap-8 lg:gap-12"
+              className="flex items-center gap-8 sm:gap-12 lg:gap-16"
               animate={{
                 x: [-100 * technologies.length, 0]
               }}
@@ -179,7 +179,7 @@ export function TechIcons() {
                   className="flex-shrink-0 group relative"
                 >
                   <div 
-                    className="px-4 py-3 sm:px-6 sm:py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 backdrop-blur-sm border border-white/20 flex items-center justify-center"
+                    className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 backdrop-blur-sm border border-white/20 flex items-center justify-center"
                     style={{
                       background: `linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.7) 100%)`
                     }}
@@ -187,7 +187,7 @@ export function TechIcons() {
                     <img
                       src={tech.logo}
                       alt={tech.alt}
-                      className="h-8 w-8 sm:h-10 sm:w-10 lg:h-12 lg:w-12 object-contain"
+                      className="w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 object-contain"
                       loading="lazy"
                       onError={(e) => {
                         // Fallback to text if image fails to load
@@ -195,7 +195,7 @@ export function TechIcons() {
                         target.style.display = 'none';
                         const parent = target.parentElement;
                         if (parent) {
-                          parent.innerHTML = `<span class="text-sm sm:text-base lg:text-lg font-bold text-gray-700">${tech.name}</span>`;
+                          parent.innerHTML = `<span class="text-xs sm:text-sm lg:text-base font-bold text-gray-700">${tech.name}</span>`;
                         }
                       }}
                     />
@@ -208,7 +208,7 @@ export function TechIcons() {
           {/* Third Row - Right to Left Scroll (Faster) */}
           <div className="flex items-center overflow-hidden" aria-hidden="true">
             <motion.div
-              className="flex items-center gap-6 sm:gap-8 lg:gap-12"
+              className="flex items-center gap-8 sm:gap-12 lg:gap-16"
               animate={{
                 x: [0, -100 * technologies.length]
               }}
@@ -228,7 +228,7 @@ export function TechIcons() {
                   className="flex-shrink-0 group relative"
                 >
                   <div 
-                    className="px-4 py-3 sm:px-6 sm:py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 backdrop-blur-sm border border-white/20 flex items-center justify-center"
+                    className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 backdrop-blur-sm border border-white/20 flex items-center justify-center"
                     style={{
                       background: `linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.7) 100%)`
                     }}
@@ -236,7 +236,7 @@ export function TechIcons() {
                     <img
                       src={tech.logo}
                       alt={tech.alt}
-                      className="h-8 w-8 sm:h-10 sm:w-10 lg:h-12 lg:w-12 object-contain"
+                      className="w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 object-contain"
                       loading="lazy"
                       onError={(e) => {
                         // Fallback to text if image fails to load
@@ -244,7 +244,7 @@ export function TechIcons() {
                         target.style.display = 'none';
                         const parent = target.parentElement;
                         if (parent) {
-                          parent.innerHTML = `<span class="text-sm sm:text-base lg:text-lg font-bold text-gray-700">${tech.name}</span>`;
+                          parent.innerHTML = `<span class="text-xs sm:text-sm lg:text-base font-bold text-gray-700">${tech.name}</span>`;
                         }
                       }}
                     />
