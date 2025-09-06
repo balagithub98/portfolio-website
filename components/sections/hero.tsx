@@ -20,9 +20,9 @@ export function Hero() {
   }, [words.length])
 
   return (
-    <section className="section-padding-lg bg-white">
-      <div className="mx-auto max-w-6xl container-padding">
-        <div className="mx-auto max-w-4xl text-center">
+    <section className="py-24 sm:py-32 bg-background">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        <div className="mx-auto max-w-3xl text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -34,21 +34,16 @@ export function Hero() {
                 <AnimatePresence mode="wait">
                   <motion.span
                     key={currentWordIndex}
-                    initial={{ opacity: 0, y: 20, rotateX: -90 }}
-                    animate={{ opacity: 1, y: 0, rotateX: 0 }}
-                    exit={{ opacity: 0, y: -20, rotateX: 90 }}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -20 }}
                     transition={{ 
-                      duration: 0.6, 
-                      ease: "easeInOut",
-                      type: "spring",
-                      stiffness: 100
+                      duration: 0.4, 
+                      ease: "easeInOut"
                     }}
-                    className="absolute inset-0 flex items-center justify-center"
+                    className="absolute inset-0 flex items-center justify-center text-accent"
                     style={{
-                      background: `linear-gradient(135deg, #667eea 0%, #764ba2 100%)`,
-                      WebkitBackgroundClip: 'text',
-                      WebkitTextFillColor: 'transparent',
-                      backgroundClip: 'text',
+                      color: 'hsl(var(--accent))',
                       fontWeight: '800'
                     }}
                   >
@@ -57,20 +52,20 @@ export function Hero() {
                 </AnimatePresence>
               </div>
             </h1>
-            <p className="text-body text-muted-foreground max-w-2xl mx-auto mb-12">
+            <p className="text-body text-muted-foreground max-w-2xl mx-auto mb-12 leading-relaxed">
               Get your website for free with our comprehensive design, development, and marketing services. 
               We deliver fast, beautiful, and results-driven solutions that grow your business.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Button asChild size="xl" className="w-full sm:w-auto">
+              <Button asChild size="lg" className="minimal-button w-full sm:w-auto">
                 <Link href="/contact">
                   Get Your Free Website
-                  <ArrowRight className="ml-2 h-5 w-5" />
+                  <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
-              <Button variant="outline" size="xl" asChild className="w-full sm:w-auto">
+              <Button variant="outline" size="lg" asChild className="minimal-button-secondary w-full sm:w-auto">
                 <Link href="#services">
-                  <Play className="mr-2 h-5 w-5" />
+                  <Play className="mr-2 h-4 w-4" />
                   Watch Demo
                 </Link>
               </Button>
@@ -83,18 +78,18 @@ export function Hero() {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="mt-20 pt-16 border-t border-border"
+          className="mt-24 pt-16 border-t border-border"
         >
           <div className="text-center">
-            <p className="text-caption uppercase tracking-wide mb-8">
+            <p className="text-caption uppercase tracking-wider mb-12 text-muted-foreground">
               Trusted by 500+ businesses worldwide
             </p>
-            <div className="flex flex-wrap justify-center items-center gap-8 lg:gap-12 opacity-40">
-              <div className="text-lg font-medium text-muted-foreground">Company A</div>
-              <div className="text-lg font-medium text-muted-foreground">Company B</div>
-              <div className="text-lg font-medium text-muted-foreground">Company C</div>
-              <div className="text-lg font-medium text-muted-foreground">Company D</div>
-              <div className="text-lg font-medium text-muted-foreground">Company E</div>
+            <div className="flex flex-wrap justify-center items-center gap-12 lg:gap-16 opacity-60">
+              <div className="text-lg font-medium text-muted-foreground">TechCorp</div>
+              <div className="text-lg font-medium text-muted-foreground">StartupHub</div>
+              <div className="text-lg font-medium text-muted-foreground">InnovateLab</div>
+              <div className="text-lg font-medium text-muted-foreground">DigitalFlow</div>
+              <div className="text-lg font-medium text-muted-foreground">WebCraft</div>
             </div>
           </div>
         </motion.div>

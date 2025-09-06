@@ -186,19 +186,19 @@ export function TechIcons() {
   const row3Tech = shuffleArray(technologies)
 
   return (
-    <section className="py-24 sm:py-32 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 w-full" ref={ref}>
+    <section className="py-24 sm:py-32 bg-muted/20 w-full" ref={ref}>
       <div className="mx-auto max-w-7xl px-6 lg:px-8 w-full">
-        <div className="mx-auto max-w-2xl text-center mb-16 w-full">
+        <div className="mx-auto max-w-3xl text-center mb-16 w-full">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl mb-6">
+            <h2 className="text-heading text-foreground mb-6">
                 Built with Modern Technologies
             </h2>
-            <p className="text-lg leading-8 text-gray-600">
+            <p className="text-body text-muted-foreground leading-relaxed">
               We use the latest and most powerful technologies to create fast, secure, and scalable websites that deliver exceptional performance.
             </p>
           </motion.div>
@@ -229,9 +229,8 @@ export function TechIcons() {
                   className="flex-shrink-0 group relative"
                 >
                   <div 
-                    className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 backdrop-blur-sm border border-white/20 relative"
+                    className="minimal-card w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 hover-lift relative"
                     style={{
-                      background: `linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.7) 100%)`,
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
@@ -290,9 +289,8 @@ export function TechIcons() {
                   className="flex-shrink-0 group relative"
                 >
                   <div 
-                    className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 backdrop-blur-sm border border-white/20 relative"
+                    className="minimal-card w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 hover-lift relative"
                     style={{
-                      background: `linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.7) 100%)`,
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
@@ -351,9 +349,8 @@ export function TechIcons() {
                   className="flex-shrink-0 group relative"
                 >
                   <div 
-                    className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 backdrop-blur-sm border border-white/20 relative"
+                    className="minimal-card w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 hover-lift relative"
                     style={{
-                      background: `linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.7) 100%)`,
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
