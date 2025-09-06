@@ -87,9 +87,9 @@ export function TechIcons() {
   const isVisible = useInView(ref, { once: true, amount: 0.3 })
 
   return (
-    <section className="py-24 sm:py-32 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50" ref={ref}>
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="mx-auto max-w-2xl text-center mb-16">
+    <section className="py-24 sm:py-32 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 w-full" ref={ref}>
+      <div className="mx-auto max-w-7xl px-6 lg:px-8 w-full">
+        <div className="mx-auto max-w-2xl text-center mb-16 w-full">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -106,11 +106,11 @@ export function TechIcons() {
         </div>
 
         {/* Endless Horizontal Scroll Animation */}
-        <div className="relative overflow-hidden" role="region" aria-label="Technology logos carousel">
+        <div className="relative overflow-hidden w-screen -mx-6 lg:-mx-8" role="region" aria-label="Technology logos carousel">
           {/* First Row - Right to Left Scroll */}
-          <div className="flex items-center mb-6 sm:mb-8 overflow-hidden" aria-hidden="true">
+          <div className="flex items-center mb-6 sm:mb-8 overflow-hidden w-full" aria-hidden="true">
             <motion.div
-              className="flex items-center gap-8 sm:gap-12 lg:gap-16"
+              className="flex items-center gap-6 sm:gap-8 lg:gap-10"
               animate={{
                 x: [0, -100 * technologies.length]
               }}
@@ -157,9 +157,9 @@ export function TechIcons() {
           </div>
 
           {/* Second Row - Left to Right Scroll (Reverse Direction) */}
-          <div className="flex items-center mb-6 sm:mb-8 overflow-hidden" aria-hidden="true">
+          <div className="flex items-center mb-6 sm:mb-8 overflow-hidden w-full" aria-hidden="true">
             <motion.div
-              className="flex items-center gap-8 sm:gap-12 lg:gap-16"
+              className="flex items-center gap-6 sm:gap-8 lg:gap-10"
               animate={{
                 x: [-100 * technologies.length, 0]
               }}
@@ -206,9 +206,9 @@ export function TechIcons() {
           </div>
 
           {/* Third Row - Right to Left Scroll (Faster) */}
-          <div className="flex items-center overflow-hidden" aria-hidden="true">
+          <div className="flex items-center overflow-hidden w-full" aria-hidden="true">
             <motion.div
-              className="flex items-center gap-8 sm:gap-12 lg:gap-16"
+              className="flex items-center gap-6 sm:gap-8 lg:gap-10"
               animate={{
                 x: [0, -100 * technologies.length]
               }}
