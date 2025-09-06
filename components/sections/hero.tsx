@@ -4,9 +4,21 @@ import { Button } from '@/components/ui/button'
 import { CurvedUnderline, DECORATIVE_CHARS, COLOR_SCHEMES } from '@/components/ui/curved-underline'
 import Link from 'next/link'
 import { ArrowRight, Play } from 'lucide-react'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
+import { useState, useEffect } from 'react'
 
 export function Hero() {
+  const [currentWordIndex, setCurrentWordIndex] = useState(0)
+  const words = ["modern", "fast", "animated", "responsive", "beautiful", "powerful"]
+  
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentWordIndex((prevIndex) => (prevIndex + 1) % words.length)
+    }, 2500)
+    
+    return () => clearInterval(interval)
+  }, [words.length])
+
   return (
     <section className="section-padding-lg bg-white">
       <div className="mx-auto max-w-6xl container-padding">
@@ -17,14 +29,33 @@ export function Hero() {
             transition={{ duration: 0.6 }}
           >
             <h1 className="text-display text-foreground mb-8">
-              <CurvedUnderline 
-                decorativeChar={DECORATIVE_CHARS.star}
-                color="#000000"
-                wordCount={3}
-                delay={0.2}
-              >
-                Transform Your Business with Professional Web Services
-              </CurvedUnderline>
+              <span className="block mb-4">We make your website</span>
+              <div className="relative inline-block min-h-[1.2em]">
+                <AnimatePresence mode="wait">
+                  <motion.span
+                    key={currentWordIndex}
+                    initial={{ opacity: 0, y: 20, rotateX: -90 }}
+                    animate={{ opacity: 1, y: 0, rotateX: 0 }}
+                    exit={{ opacity: 0, y: -20, rotateX: 90 }}
+                    transition={{ 
+                      duration: 0.6, 
+                      ease: "easeInOut",
+                      type: "spring",
+                      stiffness: 100
+                    }}
+                    className="absolute inset-0 flex items-center justify-center"
+                    style={{
+                      background: `linear-gradient(135deg, #667eea 0%, #764ba2 100%)`,
+                      WebkitBackgroundClip: 'text',
+                      WebkitTextFillColor: 'transparent',
+                      backgroundClip: 'text',
+                      fontWeight: '800'
+                    }}
+                  >
+                    {words[currentWordIndex]}
+                  </motion.span>
+                </AnimatePresence>
+              </div>
             </h1>
             <p className="text-body text-muted-foreground max-w-2xl mx-auto mb-12">
               Get your website for free with our comprehensive design, development, and marketing services. 

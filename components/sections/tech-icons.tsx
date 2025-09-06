@@ -5,15 +5,21 @@ import { useRef } from 'react'
 import { CurvedUnderline, DECORATIVE_CHARS, COLOR_SCHEMES } from '@/components/ui/curved-underline'
 
 const technologies = [
-  { name: 'Next.js' },
-  { name: 'React' },
-  { name: 'Tailwind CSS' },
-  { name: 'PostgreSQL' },
-  { name: 'MongoDB' },
-  { name: 'WordPress' },
-  { name: 'Webflow' },
-  { name: 'Shopify' },
-  { name: 'WooCommerce' }
+  { name: 'React', color: '#61DAFB' },
+  { name: 'Next.js', color: '#000000' },
+  { name: 'Supabase', color: '#3ECF8E' },
+  { name: 'Tailwind CSS', color: '#06B6D4' },
+  { name: 'Firebase', color: '#FFCA28' },
+  { name: 'Figma', color: '#F24E1E' },
+  { name: 'Three.js', color: '#000000' },
+  { name: 'TypeScript', color: '#3178C6' },
+  { name: 'HTML', color: '#E34F26' },
+  { name: 'CSS', color: '#1572B6' },
+  { name: 'Sass', color: '#CC6699' },
+  { name: 'Webpack', color: '#8DD6F9' },
+  { name: 'Strapi', color: '#2F2E8B' },
+  { name: 'Bootstrap', color: '#7952B3' },
+  { name: 'D3.js', color: '#F9A03C' }
 ]
 
 export function TechIcons() {
@@ -21,8 +27,8 @@ export function TechIcons() {
   const isVisible = useInView(ref, { once: true, amount: 0.3 })
 
   return (
-    <section className="section-padding-lg bg-muted/30" ref={ref}>
-      <div className="mx-auto max-w-6xl container-padding">
+    <section className="py-24 sm:py-32 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50" ref={ref}>
+      <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center mb-16">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -30,17 +36,10 @@ export function TechIcons() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-heading text-foreground mb-6">
-              <CurvedUnderline 
-                decorativeChar={DECORATIVE_CHARS.sparkle}
-                color="#000000"
-                wordCount={2}
-                delay={0.3}
-              >
-                Built with Modern Technologies
-              </CurvedUnderline>
+            <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl mb-6">
+              Built with Modern Technologies
             </h2>
-            <p className="text-body text-muted-foreground">
+            <p className="text-lg leading-8 text-gray-600">
               We use the latest and most powerful technologies to create fast, secure, and scalable websites that deliver exceptional performance.
             </p>
           </motion.div>
@@ -70,8 +69,17 @@ export function TechIcons() {
                   key={`${tech.name}-${index}`}
                   className="flex-shrink-0 group relative"
                 >
-                  <div className="minimal-card px-6 py-3 sm:px-8 sm:py-4 hover-lift">
-                    <span className="text-lg sm:text-xl lg:text-2xl font-semibold text-foreground whitespace-nowrap">
+                  <div 
+                    className="px-6 py-3 sm:px-8 sm:py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 backdrop-blur-sm border border-white/20"
+                    style={{
+                      background: `linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.7) 100%)`,
+                      borderColor: `${tech.color}20`
+                    }}
+                  >
+                    <span 
+                      className="text-lg sm:text-xl lg:text-2xl font-bold whitespace-nowrap"
+                      style={{ color: tech.color }}
+                    >
                       {tech.name}
                     </span>
                   </div>
@@ -102,8 +110,17 @@ export function TechIcons() {
                   key={`${tech.name}-reverse-${index}`}
                   className="flex-shrink-0 group relative"
                 >
-                  <div className="minimal-card px-6 py-3 sm:px-8 sm:py-4 hover-lift">
-                    <span className="text-lg sm:text-xl lg:text-2xl font-semibold text-foreground whitespace-nowrap">
+                  <div 
+                    className="px-6 py-3 sm:px-8 sm:py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 backdrop-blur-sm border border-white/20"
+                    style={{
+                      background: `linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.7) 100%)`,
+                      borderColor: `${tech.color}20`
+                    }}
+                  >
+                    <span 
+                      className="text-lg sm:text-xl lg:text-2xl font-bold whitespace-nowrap"
+                      style={{ color: tech.color }}
+                    >
                       {tech.name}
                     </span>
                   </div>
@@ -134,8 +151,17 @@ export function TechIcons() {
                   key={`${tech.name}-fast-${index}`}
                   className="flex-shrink-0 group relative"
                 >
-                  <div className="minimal-card px-6 py-3 sm:px-8 sm:py-4 hover-lift">
-                    <span className="text-lg sm:text-xl lg:text-2xl font-semibold text-foreground whitespace-nowrap">
+                  <div 
+                    className="px-6 py-3 sm:px-8 sm:py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 backdrop-blur-sm border border-white/20"
+                    style={{
+                      background: `linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.7) 100%)`,
+                      borderColor: `${tech.color}20`
+                    }}
+                  >
+                    <span 
+                      className="text-lg sm:text-xl lg:text-2xl font-bold whitespace-nowrap"
+                      style={{ color: tech.color }}
+                    >
                       {tech.name}
                     </span>
                   </div>
@@ -152,12 +178,12 @@ export function TechIcons() {
           transition={{ delay: 3, duration: 1 }}
           className="mt-16 text-center"
         >
-          <div className="inline-flex items-center space-x-3 px-6 py-3 rounded-full backdrop-blur-xl border border-white/20"
+          <div className="inline-flex items-center space-x-3 px-6 py-3 rounded-full backdrop-blur-xl border border-gray-200/50"
                style={{
-                 background: `linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%)`
+                 background: `linear-gradient(135deg, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0.6) 100%)`
                }}>
-            <div className="w-3 h-3 bg-gradient-to-r from-cyan-400 to-mint-400 rounded-full animate-pulse shadow-lg"></div>
-            <span className="text-sm font-medium text-white">Technologies continuously updated</span>
+            <div className="w-3 h-3 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full animate-pulse shadow-lg"></div>
+            <span className="text-sm font-medium text-gray-700">Technologies continuously updated</span>
           </div>
         </motion.div>
       </div>
