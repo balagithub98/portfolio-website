@@ -229,21 +229,26 @@ export function TechIcons() {
                   className="flex-shrink-0 group relative"
                 >
                   <div 
-                    className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 backdrop-blur-sm border border-white/20 flex items-center justify-center relative p-2"
+                    className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 backdrop-blur-sm border border-white/20 relative"
                     style={{
-                      background: `linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.7) 100%)`
+                      background: `linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.7) 100%)`,
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      padding: '8px'
                     }}
                   >
                     <img
                       src={tech.logo}
                       alt={tech.alt}
-                      className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 object-contain object-center"
+                      className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 object-contain"
                       style={{ 
                         display: 'block',
-                        margin: 'auto',
-                        verticalAlign: 'middle',
                         imageRendering: 'crisp-edges',
-                        filter: 'contrast(1.1) saturate(1.1)'
+                        filter: 'contrast(1.1) saturate(1.1)',
+                        position: 'relative',
+                        top: '0',
+                        left: '0'
                       }}
                       loading="lazy"
                       onError={(e) => {
@@ -252,7 +257,7 @@ export function TechIcons() {
                         target.style.display = 'none';
                         const parent = target.parentElement;
                         if (parent) {
-                          parent.innerHTML = `<span class="text-xs sm:text-sm lg:text-base font-bold text-gray-700 flex items-center justify-center h-full">${tech.name}</span>`;
+                          parent.innerHTML = `<span class="text-xs sm:text-sm lg:text-base font-bold text-gray-700" style="display: flex; align-items: center; justify-content: center; height: 100%;">${tech.name}</span>`;
                         }
                       }}
                     />
@@ -285,21 +290,26 @@ export function TechIcons() {
                   className="flex-shrink-0 group relative"
                 >
                   <div 
-                    className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 backdrop-blur-sm border border-white/20 flex items-center justify-center relative p-2"
+                    className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 backdrop-blur-sm border border-white/20 relative"
                     style={{
-                      background: `linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.7) 100%)`
+                      background: `linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.7) 100%)`,
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      padding: '8px'
                     }}
                   >
                     <img
                       src={tech.logo}
                       alt={tech.alt}
-                      className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 object-contain object-center"
+                      className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 object-contain"
                       style={{ 
                         display: 'block',
-                        margin: 'auto',
-                        verticalAlign: 'middle',
                         imageRendering: 'crisp-edges',
-                        filter: 'contrast(1.1) saturate(1.1)'
+                        filter: 'contrast(1.1) saturate(1.1)',
+                        position: 'relative',
+                        top: '0',
+                        left: '0'
                       }}
                       loading="lazy"
                       onError={(e) => {
@@ -308,7 +318,7 @@ export function TechIcons() {
                         target.style.display = 'none';
                         const parent = target.parentElement;
                         if (parent) {
-                          parent.innerHTML = `<span class="text-xs sm:text-sm lg:text-base font-bold text-gray-700 flex items-center justify-center h-full">${tech.name}</span>`;
+                          parent.innerHTML = `<span class="text-xs sm:text-sm lg:text-base font-bold text-gray-700" style="display: flex; align-items: center; justify-content: center; height: 100%;">${tech.name}</span>`;
                         }
                       }}
                     />
@@ -341,21 +351,26 @@ export function TechIcons() {
                   className="flex-shrink-0 group relative"
                 >
                   <div 
-                    className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 backdrop-blur-sm border border-white/20 flex items-center justify-center relative p-2"
+                    className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 backdrop-blur-sm border border-white/20 relative"
                     style={{
-                      background: `linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.7) 100%)`
+                      background: `linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.7) 100%)`,
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      padding: '8px'
                     }}
                   >
                     <img
                       src={tech.logo}
                       alt={tech.alt}
-                      className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 object-contain object-center"
+                      className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 object-contain"
                       style={{ 
                         display: 'block',
-                        margin: 'auto',
-                        verticalAlign: 'middle',
                         imageRendering: 'crisp-edges',
-                        filter: 'contrast(1.1) saturate(1.1)'
+                        filter: 'contrast(1.1) saturate(1.1)',
+                        position: 'relative',
+                        top: '0',
+                        left: '0'
                       }}
                       loading="lazy"
                       onError={(e) => {
@@ -364,7 +379,7 @@ export function TechIcons() {
                         target.style.display = 'none';
                         const parent = target.parentElement;
                         if (parent) {
-                          parent.innerHTML = `<span class="text-xs sm:text-sm lg:text-base font-bold text-gray-700 flex items-center justify-center h-full">${tech.name}</span>`;
+                          parent.innerHTML = `<span class="text-xs sm:text-sm lg:text-base font-bold text-gray-700" style="display: flex; align-items: center; justify-content: center; height: 100%;">${tech.name}</span>`;
                         }
                       }}
                     />
