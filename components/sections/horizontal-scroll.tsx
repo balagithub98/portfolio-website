@@ -69,11 +69,11 @@ export function HorizontalScroll() {
   
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ["start start", "end start"]
+    offset: ["start end", "end start"]
   })
 
   // Create a more controlled scroll progression
-  const x = useTransform(scrollYProgress, [0, 0.25, 0.5, 0.75, 1], ["0%", "-100%", "-200%", "-200%", "-200%"])
+  const x = useTransform(scrollYProgress, [0, 0.33, 0.66, 1], ["0%", "-100%", "-200%", "-200%"])
   const smoothX = useSpring(x, { stiffness: 100, damping: 30, restDelta: 0.001 })
 
   // Handle keyboard navigation
@@ -126,15 +126,12 @@ export function HorizontalScroll() {
   useEffect(() => {
     const unsubscribe = scrollYProgress.onChange((latest) => {
       console.log('Scroll progress:', latest) // Debug log
-      if (latest < 0.25) {
+      if (latest < 0.33) {
         setCurrentPanel(0) // Design
-      } else if (latest < 0.5) {
+      } else if (latest < 0.66) {
         setCurrentPanel(1) // Development
-      } else if (latest < 0.75) {
-        setCurrentPanel(2) // Marketing
       } else {
-        // Lock at the end - no more horizontal movement
-        setCurrentPanel(2)
+        setCurrentPanel(2) // Marketing
       }
     })
     return unsubscribe
@@ -279,14 +276,37 @@ export function HorizontalScroll() {
         <p className="text-xs text-muted-foreground">
           Progress: {Math.round(scrollYProgress.get() * 100)}% | Panel: {currentPanel + 1}/3
         </p>
+        <p className="text-xs text-muted-foreground">
+          X Position: {Math.round(parseFloat(smoothX.get().toString().replace('%', '')))}%
+        </p>
+        <div className="flex gap-2 mt-2">
+          <button 
+            onClick={() => setCurrentPanel(0)}
+            className="text-xs px-2 py-1 bg-accent/10 rounded hover:bg-accent/20"
+          >
+            Design
+          </button>
+          <button 
+            onClick={() => setCurrentPanel(1)}
+            className="text-xs px-2 py-1 bg-accent/10 rounded hover:bg-accent/20"
+          >
+            Dev
+          </button>
+          <button 
+            onClick={() => setCurrentPanel(2)}
+            className="text-xs px-2 py-1 bg-accent/10 rounded hover:bg-accent/20"
+          >
+            Marketing
+          </button>
+        </div>
       </div>
 
       {/* Lock/Release Indicator */}
       <motion.div
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ 
-          opacity: scrollYProgress.get() > 0.75 ? 1 : 0,
-          scale: scrollYProgress.get() > 0.75 ? 1 : 0.8
+          opacity: scrollYProgress.get() > 0.8 ? 1 : 0,
+          scale: scrollYProgress.get() > 0.8 ? 1 : 0.8
         }}
         className="fixed top-8 left-1/2 transform -translate-x-1/2 z-50"
       >
