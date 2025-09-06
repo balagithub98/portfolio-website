@@ -106,7 +106,7 @@ export function TechIcons() {
         </div>
 
         {/* Endless Horizontal Scroll Animation */}
-        <div className="relative overflow-hidden w-screen -mx-6 lg:-mx-8" role="region" aria-label="Technology logos carousel">
+        <div className="relative overflow-hidden" style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)' }} role="region" aria-label="Technology logos carousel">
           {/* First Row - Right to Left Scroll */}
           <div className="flex items-center mb-6 sm:mb-8 overflow-hidden w-full" aria-hidden="true">
             <motion.div
