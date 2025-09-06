@@ -217,7 +217,7 @@ export function TechIcons() {
                 x: {
                   repeat: Infinity,
                   repeatType: "loop",
-                  duration: 40,
+                  duration: 60,
                   ease: "linear",
                 },
               }}
@@ -277,7 +277,7 @@ export function TechIcons() {
                 x: {
                   repeat: Infinity,
                   repeatType: "loop",
-                  duration: 40,
+                  duration: 60,
                   ease: "linear",
                 },
               }}
@@ -337,7 +337,7 @@ export function TechIcons() {
                 x: {
                   repeat: Infinity,
                   repeatType: "loop",
-                  duration: 40,
+                  duration: 60,
                   ease: "linear",
                 },
               }}
