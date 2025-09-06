@@ -77,24 +77,20 @@ export function ContactForm() {
       initial={{ opacity: 0, x: -20 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.6 }}
-      className="rounded-2xl p-8 shadow-xl border-2 border-indigo-200 backdrop-blur-xl"
-      style={{
-        background: `linear-gradient(135deg, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0.2) 100%)`,
-        boxShadow: `0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.1)`
-      }}
+      className="minimal-card p-8"
     >
-      <h2 className="text-2xl font-bold text-gray-900 mb-6">Send us a message</h2>
+      <h2 className="text-subheading text-foreground mb-6">Send us a message</h2>
       
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
         <div>
-          <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
+          <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
             Name *
           </label>
           <Input
             id="name"
             {...register('name')}
             placeholder="Your full name"
-            className={errors.name ? 'border-red-500' : ''}
+            className={`minimal-input ${errors.name ? 'border-red-500' : ''}`}
           />
           {errors.name && (
             <p className="mt-1 text-sm text-red-600">{errors.name.message}</p>
@@ -102,7 +98,7 @@ export function ContactForm() {
         </div>
 
         <div>
-          <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+          <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
             Email *
           </label>
           <Input
@@ -110,7 +106,7 @@ export function ContactForm() {
             type="email"
             {...register('email')}
             placeholder="your@email.com"
-            className={errors.email ? 'border-red-500' : ''}
+            className={`minimal-input ${errors.email ? 'border-red-500' : ''}`}
           />
           {errors.email && (
             <p className="mt-1 text-sm text-red-600">{errors.email.message}</p>
@@ -118,14 +114,14 @@ export function ContactForm() {
         </div>
 
         <div>
-          <label htmlFor="service_type" className="block text-sm font-medium text-gray-700 mb-2">
+          <label htmlFor="service_type" className="block text-sm font-medium text-foreground mb-2">
             Service Type
           </label>
           <Select
             value={serviceType}
             onValueChange={(value) => setValue('service_type', value as 'design' | 'development' | 'marketing')}
           >
-            <SelectTrigger>
+            <SelectTrigger className="minimal-input">
               <SelectValue placeholder="Select a service" />
             </SelectTrigger>
             <SelectContent>
@@ -137,7 +133,7 @@ export function ContactForm() {
         </div>
 
         <div>
-          <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
+          <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">
             Message *
           </label>
           <Textarea
@@ -145,7 +141,7 @@ export function ContactForm() {
             {...register('message')}
             placeholder="Tell us about your project..."
             rows={6}
-            className={errors.message ? 'border-red-500' : ''}
+            className={`minimal-input ${errors.message ? 'border-red-500' : ''}`}
           />
           {errors.message && (
             <p className="mt-1 text-sm text-red-600">{errors.message.message}</p>
@@ -181,7 +177,7 @@ export function ContactForm() {
         <Button
           type="submit"
           disabled={isSubmitting}
-          className="w-full"
+          className="minimal-button w-full"
           size="lg"
         >
           {isSubmitting ? (
@@ -189,7 +185,7 @@ export function ContactForm() {
           ) : (
             <>
               Send Message
-              <Send className="ml-2 h-5 w-5" />
+              <Send className="ml-2 h-4 w-4" />
             </>
           )}
         </Button>
