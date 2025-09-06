@@ -55,7 +55,7 @@ export function LandingHorizontalScroll() {
 
       {/* Design Grid Panel */}
       <div className="panel w-screen h-screen bg-muted/20 text-foreground p-4 sm:p-8 lg:p-12 flex flex-col items-center justify-center">
-        <h2 className="text-2xl sm:text-4xl lg:text-display text-foreground mb-8 sm:mb-12 lg:mb-16 text-center px-4">Design Process</h2>
+        <h2 className="text-2xl sm:text-4xl lg:text-display text-foreground mb-8 sm:mb-12 lg:mb-16 text-center px-4">Design</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 w-full max-w-6xl px-4">
           <Box
             title="Discovery"
@@ -84,7 +84,7 @@ export function LandingHorizontalScroll() {
 
       {/* Development Grid Panel */}
       <div className="panel w-screen h-screen bg-muted/20 text-foreground p-4 sm:p-8 lg:p-12 flex flex-col items-center justify-center">
-        <h2 className="text-2xl sm:text-4xl lg:text-display text-foreground mb-8 sm:mb-12 lg:mb-16 text-center px-4">Development Process</h2>
+        <h2 className="text-2xl sm:text-4xl lg:text-display text-foreground mb-8 sm:mb-12 lg:mb-16 text-center px-4">Development</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 w-full max-w-6xl px-4">
           <Box
             title="Planning"
@@ -113,7 +113,7 @@ export function LandingHorizontalScroll() {
 
       {/* SEO Grid Panel */}
       <div className="panel w-screen h-screen bg-muted/20 text-foreground p-4 sm:p-8 lg:p-12 flex flex-col items-center justify-center">
-        <h2 className="text-2xl sm:text-4xl lg:text-display text-foreground mb-8 sm:mb-12 lg:mb-16 text-center px-4">SEO Process</h2>
+        <h2 className="text-2xl sm:text-4xl lg:text-display text-foreground mb-8 sm:mb-12 lg:mb-16 text-center px-4">SEO</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 w-full max-w-6xl px-4">
           <Box
             title="Keyword Research"

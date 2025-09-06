@@ -33,6 +33,20 @@ export default function HomePage() {
       <ScreenCompatibility />
       <TechIcons />
       
+      {/* Section Title */}
+      <section className="py-16 sm:py-24 bg-background">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="mx-auto max-w-3xl text-center">
+            <h2 className="text-display text-foreground mb-6">
+              End-to-End Business Solutions
+            </h2>
+            <p className="text-body text-muted-foreground leading-relaxed">
+              From design to development to SEO, we provide comprehensive solutions that drive your business forward.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* Horizontal Scroll Section */}
       <section className="landing-horizontal-section relative h-screen overflow-hidden">
         <LandingHorizontalScroll />
