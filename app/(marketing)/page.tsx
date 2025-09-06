@@ -12,6 +12,7 @@ import { FreeWebsiteOffer } from '@/components/sections/free-website-offer'
 import { CustomerPainPoints } from '@/components/sections/customer-pain-points'
 import { FAQ } from '@/components/sections/faq'
 import { FinalCTA } from '@/components/sections/final-cta'
+import { DemoCTA } from '@/components/sections/demo-cta'
 import { generateMetadata as generatePageMetadata } from '@/lib/utils'
 
 export const metadata = generatePageMetadata({
@@ -30,6 +31,7 @@ export default function HomePage() {
       <FeaturesBenefits />
       <ScreenCompatibility />
       <TechIcons />
+      <DemoCTA />
       <StorytellingPanels />
       <Testimonials />
       <AwardsAndStats />
