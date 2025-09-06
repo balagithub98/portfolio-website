@@ -157,7 +157,7 @@ const technologies = [
   },
   { 
     name: 'PlanetScale', 
-    logo: 'https://planetscale.com/images/logo.svg',
+    logo: 'https://avatars.githubusercontent.com/u/35612527?s=200&v=4',
     alt: 'PlanetScale - A serverless MySQL platform'
   },
   { 
