@@ -1,6 +1,7 @@
 import { Hero } from '@/components/sections/hero'
 import { OurPromise } from '@/components/sections/our-promise'
 import { ProblemStatement } from '@/components/sections/problem-statement'
+import { EndToEndServices } from '@/components/sections/end-to-end-services'
 import { FeaturesBenefits } from '@/components/sections/features-benefits'
 import { ScreenCompatibility } from '@/components/sections/screen-compatibility'
 import { TechIcons } from '@/components/sections/tech-icons'
@@ -27,6 +28,7 @@ export default function HomePage() {
       <Hero />
       <OurPromise />
       <ProblemStatement />
+      <EndToEndServices />
       <FeaturesBenefits />
       <ScreenCompatibility />
       <TechIcons />

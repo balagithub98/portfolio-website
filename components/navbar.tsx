@@ -52,7 +52,10 @@ export function Navbar() {
             <button
               type="button"
               className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-foreground hover:bg-muted transition-colors"
-              onClick={() => setMobileMenuOpen(true)}
+              onClick={() => {
+                console.log('Mobile menu button clicked')
+                setMobileMenuOpen(true)
+              }}
               aria-label="Open main menu"
             >
               <Menu className="h-6 w-6" aria-hidden="true" />
@@ -78,6 +81,11 @@ export function Navbar() {
               <Link href="/contact">Get Started</Link>
             </Button>
           </div>
+        </div>
+
+        {/* Debug indicator */}
+        <div className="fixed top-20 left-4 z-50 bg-red-500 text-white px-2 py-1 text-xs lg:hidden">
+          Mobile Menu: {mobileMenuOpen ? 'Open' : 'Closed'}
         </div>
 
         {/* Mobile menu */}
