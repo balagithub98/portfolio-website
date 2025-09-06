@@ -5,21 +5,81 @@ import { useRef } from 'react'
 import { CurvedUnderline, DECORATIVE_CHARS, COLOR_SCHEMES } from '@/components/ui/curved-underline'
 
 const technologies = [
-  { name: 'React', color: '#61DAFB' },
-  { name: 'Next.js', color: '#000000' },
-  { name: 'Supabase', color: '#3ECF8E' },
-  { name: 'Tailwind CSS', color: '#06B6D4' },
-  { name: 'Firebase', color: '#FFCA28' },
-  { name: 'Figma', color: '#F24E1E' },
-  { name: 'Three.js', color: '#000000' },
-  { name: 'TypeScript', color: '#3178C6' },
-  { name: 'HTML', color: '#E34F26' },
-  { name: 'CSS', color: '#1572B6' },
-  { name: 'Sass', color: '#CC6699' },
-  { name: 'Webpack', color: '#8DD6F9' },
-  { name: 'Strapi', color: '#2F2E8B' },
-  { name: 'Bootstrap', color: '#7952B3' },
-  { name: 'D3.js', color: '#F9A03C' }
+  { 
+    name: 'React', 
+    logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg',
+    alt: 'React - A JavaScript library for building user interfaces'
+  },
+  { 
+    name: 'JavaScript', 
+    logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg',
+    alt: 'JavaScript - A programming language for web development'
+  },
+  { 
+    name: 'TypeScript', 
+    logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg',
+    alt: 'TypeScript - A typed superset of JavaScript'
+  },
+  { 
+    name: 'D3.js', 
+    logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/d3js/d3js-original.svg',
+    alt: 'D3.js - A JavaScript library for data visualization'
+  },
+  { 
+    name: 'Next.js', 
+    logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg',
+    alt: 'Next.js - A React framework for production'
+  },
+  { 
+    name: 'HTML', 
+    logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg',
+    alt: 'HTML5 - HyperText Markup Language for web structure'
+  },
+  { 
+    name: 'CSS', 
+    logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg',
+    alt: 'CSS3 - Cascading Style Sheets for web styling'
+  },
+  { 
+    name: 'Sass', 
+    logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sass/sass-original.svg',
+    alt: 'Sass - A CSS preprocessor for enhanced styling'
+  },
+  { 
+    name: 'Tailwind CSS', 
+    logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg',
+    alt: 'Tailwind CSS - A utility-first CSS framework'
+  },
+  { 
+    name: 'Bootstrap', 
+    logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg',
+    alt: 'Bootstrap - A popular CSS framework for responsive design'
+  },
+  { 
+    name: 'Three.js', 
+    logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/threejs/threejs-original.svg',
+    alt: 'Three.js - A JavaScript 3D library for web graphics'
+  },
+  { 
+    name: 'Strapi', 
+    logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/strapi/strapi-original.svg',
+    alt: 'Strapi - A headless CMS for building APIs'
+  },
+  { 
+    name: 'Webpack', 
+    logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/webpack/webpack-original.svg',
+    alt: 'Webpack - A module bundler for JavaScript applications'
+  },
+  { 
+    name: 'Firebase', 
+    logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg',
+    alt: 'Firebase - A platform for building mobile and web applications'
+  },
+  { 
+    name: 'Figma', 
+    logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg',
+    alt: 'Figma - A collaborative interface design tool'
+  }
 ]
 
 export function TechIcons() {
@@ -46,95 +106,13 @@ export function TechIcons() {
         </div>
 
         {/* Endless Horizontal Scroll Animation */}
-        <div className="relative overflow-hidden">
+        <div className="relative overflow-hidden" role="region" aria-label="Technology logos carousel">
           {/* First Row - Right to Left Scroll */}
-          <div className="flex items-center mb-8 sm:mb-12 overflow-hidden">
+          <div className="flex items-center mb-8 sm:mb-12 overflow-hidden" aria-hidden="true">
             <motion.div
               className="flex items-center gap-6 sm:gap-8 lg:gap-12"
               animate={{
-                x: [0, -50 * technologies.length]
-              }}
-              transition={{
-                x: {
-                  repeat: Infinity,
-                  repeatType: "loop",
-                  duration: 30,
-                  ease: "linear",
-                },
-              }}
-            >
-              {/* Duplicate the technologies array for seamless loop */}
-              {[...technologies, ...technologies, ...technologies].map((tech, index) => (
-                <div
-                  key={`${tech.name}-${index}`}
-                  className="flex-shrink-0 group relative"
-                >
-                  <div 
-                    className="px-6 py-3 sm:px-8 sm:py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 backdrop-blur-sm border border-white/20"
-                    style={{
-                      background: `linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.7) 100%)`,
-                      borderColor: `${tech.color}20`
-                    }}
-                  >
-                    <span 
-                      className="text-lg sm:text-xl lg:text-2xl font-bold whitespace-nowrap"
-                      style={{ color: tech.color }}
-                    >
-                      {tech.name}
-                    </span>
-                  </div>
-                </div>
-              ))}
-            </motion.div>
-          </div>
-
-          {/* Second Row - Left to Right Scroll (Reverse Direction) */}
-          <div className="flex items-center mb-8 sm:mb-12 overflow-hidden">
-            <motion.div
-              className="flex items-center gap-6 sm:gap-8 lg:gap-12"
-              animate={{
-                x: [-50 * technologies.length, 0]
-              }}
-              transition={{
-                x: {
-                  repeat: Infinity,
-                  repeatType: "loop",
-                  duration: 35,
-                  ease: "linear",
-                },
-              }}
-            >
-              {/* Duplicate the technologies array for seamless loop */}
-              {[...technologies, ...technologies, ...technologies].map((tech, index) => (
-                <div
-                  key={`${tech.name}-reverse-${index}`}
-                  className="flex-shrink-0 group relative"
-                >
-                  <div 
-                    className="px-6 py-3 sm:px-8 sm:py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 backdrop-blur-sm border border-white/20"
-                    style={{
-                      background: `linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.7) 100%)`,
-                      borderColor: `${tech.color}20`
-                    }}
-                  >
-                    <span 
-                      className="text-lg sm:text-xl lg:text-2xl font-bold whitespace-nowrap"
-                      style={{ color: tech.color }}
-                    >
-                      {tech.name}
-                    </span>
-                  </div>
-                </div>
-              ))}
-            </motion.div>
-          </div>
-
-          {/* Third Row - Right to Left Scroll (Faster) */}
-          <div className="flex items-center overflow-hidden">
-            <motion.div
-              className="flex items-center gap-6 sm:gap-8 lg:gap-12"
-              animate={{
-                x: [0, -50 * technologies.length]
+                x: [0, -100 * technologies.length]
               }}
               transition={{
                 x: {
@@ -148,27 +126,143 @@ export function TechIcons() {
               {/* Duplicate the technologies array for seamless loop */}
               {[...technologies, ...technologies, ...technologies].map((tech, index) => (
                 <div
-                  key={`${tech.name}-fast-${index}`}
+                  key={`${tech.name}-${index}`}
                   className="flex-shrink-0 group relative"
                 >
                   <div 
-                    className="px-6 py-3 sm:px-8 sm:py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 backdrop-blur-sm border border-white/20"
+                    className="px-4 py-3 sm:px-6 sm:py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 backdrop-blur-sm border border-white/20 flex items-center justify-center"
                     style={{
-                      background: `linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.7) 100%)`,
-                      borderColor: `${tech.color}20`
+                      background: `linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.7) 100%)`
                     }}
                   >
-                    <span 
-                      className="text-lg sm:text-xl lg:text-2xl font-bold whitespace-nowrap"
-                      style={{ color: tech.color }}
-                    >
-                      {tech.name}
-                    </span>
+                    <img
+                      src={tech.logo}
+                      alt={tech.alt}
+                      className="h-8 w-8 sm:h-10 sm:w-10 lg:h-12 lg:w-12 object-contain"
+                      loading="lazy"
+                      onError={(e) => {
+                        // Fallback to text if image fails to load
+                        const target = e.target as HTMLImageElement;
+                        target.style.display = 'none';
+                        const parent = target.parentElement;
+                        if (parent) {
+                          parent.innerHTML = `<span class="text-sm sm:text-base lg:text-lg font-bold text-gray-700">${tech.name}</span>`;
+                        }
+                      }}
+                    />
                   </div>
                 </div>
               ))}
             </motion.div>
           </div>
+
+          {/* Second Row - Left to Right Scroll (Reverse Direction) */}
+          <div className="flex items-center mb-8 sm:mb-12 overflow-hidden" aria-hidden="true">
+            <motion.div
+              className="flex items-center gap-6 sm:gap-8 lg:gap-12"
+              animate={{
+                x: [-100 * technologies.length, 0]
+              }}
+              transition={{
+                x: {
+                  repeat: Infinity,
+                  repeatType: "loop",
+                  duration: 30,
+                  ease: "linear",
+                },
+              }}
+            >
+              {/* Duplicate the technologies array for seamless loop */}
+              {[...technologies, ...technologies, ...technologies].map((tech, index) => (
+                <div
+                  key={`${tech.name}-reverse-${index}`}
+                  className="flex-shrink-0 group relative"
+                >
+                  <div 
+                    className="px-4 py-3 sm:px-6 sm:py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 backdrop-blur-sm border border-white/20 flex items-center justify-center"
+                    style={{
+                      background: `linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.7) 100%)`
+                    }}
+                  >
+                    <img
+                      src={tech.logo}
+                      alt={tech.alt}
+                      className="h-8 w-8 sm:h-10 sm:w-10 lg:h-12 lg:w-12 object-contain"
+                      loading="lazy"
+                      onError={(e) => {
+                        // Fallback to text if image fails to load
+                        const target = e.target as HTMLImageElement;
+                        target.style.display = 'none';
+                        const parent = target.parentElement;
+                        if (parent) {
+                          parent.innerHTML = `<span class="text-sm sm:text-base lg:text-lg font-bold text-gray-700">${tech.name}</span>`;
+                        }
+                      }}
+                    />
+                  </div>
+                </div>
+              ))}
+            </motion.div>
+          </div>
+
+          {/* Third Row - Right to Left Scroll (Faster) */}
+          <div className="flex items-center overflow-hidden" aria-hidden="true">
+            <motion.div
+              className="flex items-center gap-6 sm:gap-8 lg:gap-12"
+              animate={{
+                x: [0, -100 * technologies.length]
+              }}
+              transition={{
+                x: {
+                  repeat: Infinity,
+                  repeatType: "loop",
+                  duration: 20,
+                  ease: "linear",
+                },
+              }}
+            >
+              {/* Duplicate the technologies array for seamless loop */}
+              {[...technologies, ...technologies, ...technologies].map((tech, index) => (
+                <div
+                  key={`${tech.name}-fast-${index}`}
+                  className="flex-shrink-0 group relative"
+                >
+                  <div 
+                    className="px-4 py-3 sm:px-6 sm:py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 backdrop-blur-sm border border-white/20 flex items-center justify-center"
+                    style={{
+                      background: `linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.7) 100%)`
+                    }}
+                  >
+                    <img
+                      src={tech.logo}
+                      alt={tech.alt}
+                      className="h-8 w-8 sm:h-10 sm:w-10 lg:h-12 lg:w-12 object-contain"
+                      loading="lazy"
+                      onError={(e) => {
+                        // Fallback to text if image fails to load
+                        const target = e.target as HTMLImageElement;
+                        target.style.display = 'none';
+                        const parent = target.parentElement;
+                        if (parent) {
+                          parent.innerHTML = `<span class="text-sm sm:text-base lg:text-lg font-bold text-gray-700">${tech.name}</span>`;
+                        }
+                      }}
+                    />
+                  </div>
+                </div>
+              ))}
+            </motion.div>
+          </div>
+        </div>
+
+        {/* Screen Reader Accessible Technology List */}
+        <div className="sr-only">
+          <h3>Technologies We Use</h3>
+          <ul>
+            {technologies.map((tech) => (
+              <li key={tech.name}>{tech.alt}</li>
+            ))}
+          </ul>
         </div>
 
         {/* Premium Status Indicator */}
