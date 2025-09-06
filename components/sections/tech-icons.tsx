@@ -170,6 +170,20 @@ const technologies = [
 export function TechIcons() {
   const ref = useRef(null)
   const isVisible = useInView(ref, { once: true, amount: 0.3 })
+  
+  // Create different shuffled arrays for each row to avoid overlapping patterns
+  const shuffleArray = (array: typeof technologies) => {
+    const shuffled = [...array]
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]
+    }
+    return shuffled
+  }
+  
+  const row1Tech = shuffleArray(technologies)
+  const row2Tech = shuffleArray(technologies)
+  const row3Tech = shuffleArray(technologies)
 
   return (
     <section className="py-24 sm:py-32 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 w-full" ref={ref}>
@@ -203,19 +217,19 @@ export function TechIcons() {
                 x: {
                   repeat: Infinity,
                   repeatType: "loop",
-                  duration: 25,
+                  duration: 40,
                   ease: "linear",
                 },
               }}
             >
               {/* Duplicate the technologies array for seamless loop */}
-              {[...technologies, ...technologies, ...technologies].map((tech, index) => (
+              {[...row1Tech, ...row1Tech, ...row1Tech].map((tech, index) => (
                 <div
                   key={`${tech.name}-${index}`}
                   className="flex-shrink-0 group relative"
                 >
                   <div 
-                    className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 backdrop-blur-sm border border-white/20 flex items-center justify-center"
+                    className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 backdrop-blur-sm border border-white/20 flex items-center justify-center relative"
                     style={{
                       background: `linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.7) 100%)`
                     }}
@@ -252,19 +266,19 @@ export function TechIcons() {
                 x: {
                   repeat: Infinity,
                   repeatType: "loop",
-                  duration: 30,
+                  duration: 40,
                   ease: "linear",
                 },
               }}
             >
               {/* Duplicate the technologies array for seamless loop */}
-              {[...technologies, ...technologies, ...technologies].map((tech, index) => (
+              {[...row2Tech, ...row2Tech, ...row2Tech].map((tech, index) => (
                 <div
                   key={`${tech.name}-reverse-${index}`}
                   className="flex-shrink-0 group relative"
                 >
                   <div 
-                    className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 backdrop-blur-sm border border-white/20 flex items-center justify-center"
+                    className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 backdrop-blur-sm border border-white/20 flex items-center justify-center relative"
                     style={{
                       background: `linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.7) 100%)`
                     }}
@@ -301,19 +315,19 @@ export function TechIcons() {
                 x: {
                   repeat: Infinity,
                   repeatType: "loop",
-                  duration: 20,
+                  duration: 40,
                   ease: "linear",
                 },
               }}
             >
               {/* Duplicate the technologies array for seamless loop */}
-              {[...technologies, ...technologies, ...technologies].map((tech, index) => (
+              {[...row3Tech, ...row3Tech, ...row3Tech].map((tech, index) => (
                 <div
                   key={`${tech.name}-fast-${index}`}
                   className="flex-shrink-0 group relative"
                 >
                   <div 
-                    className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 backdrop-blur-sm border border-white/20 flex items-center justify-center"
+                    className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 backdrop-blur-sm border border-white/20 flex items-center justify-center relative"
                     style={{
                       background: `linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.7) 100%)`
                     }}
