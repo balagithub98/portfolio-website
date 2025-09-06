@@ -19,7 +19,13 @@ export function LandingHorizontalScroll() {
       scrollTrigger: {
         trigger: ".landing-horizontal-section",
         pin: true,
-        scrub: true,
+        scrub: 1, // Smooth scrubbing
+        snap: {
+          snapTo: 1 / (panels.length - 1), // Snap to each panel
+          duration: { min: 0.2, max: 0.6 },
+          delay: 0.1,
+          ease: "power2.inOut"
+        },
         start: "top top",
         end: () => "+=" + (window.innerWidth * (panels.length - 1) * 0.8), // Reduced scroll distance for mobile
         onUpdate: (self) => {
