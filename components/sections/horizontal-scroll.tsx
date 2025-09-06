@@ -72,7 +72,8 @@ export function HorizontalScroll() {
     offset: ["start start", "end start"]
   })
 
-  const x = useTransform(scrollYProgress, [0, 1], ["0%", "-66.666%"])
+  // Create a more controlled scroll progression
+  const x = useTransform(scrollYProgress, [0, 0.33, 0.66, 1], ["0%", "-100%", "-200%", "-200%"])
   const smoothX = useSpring(x, { stiffness: 100, damping: 30, restDelta: 0.001 })
 
   // Handle keyboard navigation
@@ -121,11 +122,19 @@ export function HorizontalScroll() {
     }
   }
 
-  // Update current panel based on scroll progress
+  // Update current panel based on scroll progress with lock mechanism
   useEffect(() => {
     const unsubscribe = scrollYProgress.onChange((latest) => {
-      const panelIndex = Math.round(latest * (panels.length - 1))
-      setCurrentPanel(panelIndex)
+      if (latest < 0.33) {
+        setCurrentPanel(0) // Design
+      } else if (latest < 0.66) {
+        setCurrentPanel(1) // Development
+      } else if (latest < 0.9) {
+        setCurrentPanel(2) // Marketing
+      } else {
+        // Lock at the end - no more horizontal movement
+        setCurrentPanel(2)
+      }
     })
     return unsubscribe
   }, [scrollYProgress])
@@ -135,17 +144,25 @@ export function HorizontalScroll() {
       {/* Progress Indicator */}
       <div className="fixed top-1/2 right-8 z-50 transform -translate-y-1/2">
         <div className="flex flex-col space-y-3">
-          {panels.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => setCurrentPanel(index)}
-              className={`w-3 h-3 rounded-full transition-all duration-300 ${
+          {panels.map((panel, index) => (
+            <div key={index} className="flex flex-col items-center space-y-2">
+              <button
+                onClick={() => setCurrentPanel(index)}
+                className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                  index === currentPanel 
+                    ? 'bg-accent scale-125' 
+                    : 'bg-muted-foreground/30 hover:bg-muted-foreground/50'
+                }`}
+                aria-label={`Go to ${panel.title} panel`}
+              />
+              <span className={`text-xs transition-all duration-300 ${
                 index === currentPanel 
-                  ? 'bg-accent scale-125' 
-                  : 'bg-muted-foreground/30 hover:bg-muted-foreground/50'
-              }`}
-              aria-label={`Go to ${panels[index].title} panel`}
-            />
+                  ? 'text-accent font-medium' 
+                  : 'text-muted-foreground/50'
+              }`}>
+                {panel.title}
+              </span>
+            </div>
           ))}
         </div>
       </div>
@@ -184,7 +201,7 @@ export function HorizontalScroll() {
       {/* Horizontal Scroll Container */}
       <div 
         ref={containerRef}
-        className="h-[400vh] relative"
+        className="h-[500vh] relative"
         onTouchStart={onTouchStart}
         onTouchMove={onTouchMove}
         onTouchEnd={onTouchEnd}
@@ -249,10 +266,28 @@ export function HorizontalScroll() {
           className="bg-background/90 backdrop-blur-sm border border-border rounded-lg px-4 py-2"
         >
           <p className="text-caption text-muted-foreground text-center">
-            Scroll vertically or use arrow keys to navigate
+            {currentPanel === 0 && "Scroll down to explore Design process"}
+            {currentPanel === 1 && "Continue scrolling to see Development workflow"}
+            {currentPanel === 2 && "Final section - scroll to continue to next page section"}
           </p>
         </motion.div>
       </div>
+
+      {/* Lock/Release Indicator */}
+      <motion.div
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ 
+          opacity: scrollYProgress.get() > 0.8 ? 1 : 0,
+          scale: scrollYProgress.get() > 0.8 ? 1 : 0.8
+        }}
+        className="fixed top-8 left-1/2 transform -translate-x-1/2 z-50"
+      >
+        <div className="bg-accent/10 border border-accent/20 rounded-lg px-4 py-2">
+          <p className="text-caption text-accent font-medium text-center">
+            🔓 Horizontal scroll releasing - normal scrolling resumes
+          </p>
+        </div>
+      </motion.div>
     </section>
   )
 }
