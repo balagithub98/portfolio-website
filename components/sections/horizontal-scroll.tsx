@@ -69,12 +69,12 @@ export function HorizontalScroll() {
   
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ["start end", "end start"]
+    offset: ["start start", "end start"]
   })
 
-  // Create a more controlled scroll progression
-  const x = useTransform(scrollYProgress, [0, 0.33, 0.66, 1], ["0%", "-100%", "-200%", "-200%"])
-  const smoothX = useSpring(x, { stiffness: 100, damping: 30, restDelta: 0.001 })
+  // Create horizontal movement based on current panel
+  const panelX = useTransform(currentPanel, [0, 1, 2], ["0%", "-100%", "-200%"])
+  const smoothX = useSpring(panelX, { stiffness: 100, damping: 30, restDelta: 0.001 })
 
   // Handle keyboard navigation
   useEffect(() => {
@@ -122,7 +122,7 @@ export function HorizontalScroll() {
     }
   }
 
-  // Update current panel based on scroll progress with lock mechanism
+  // Update current panel based on scroll progress
   useEffect(() => {
     const unsubscribe = scrollYProgress.onChange((latest) => {
       console.log('Scroll progress:', latest) // Debug log
@@ -135,6 +135,18 @@ export function HorizontalScroll() {
       }
     })
     return unsubscribe
+  }, [scrollYProgress])
+
+  // Also update panel on initial load
+  useEffect(() => {
+    const progress = scrollYProgress.get()
+    if (progress < 0.33) {
+      setCurrentPanel(0)
+    } else if (progress < 0.66) {
+      setCurrentPanel(1)
+    } else {
+      setCurrentPanel(2)
+    }
   }, [scrollYProgress])
 
   return (
@@ -213,7 +225,9 @@ export function HorizontalScroll() {
             {panels.map((panel, index) => (
               <div
                 key={panel.id}
-                className="w-screen h-screen flex-shrink-0 flex items-center justify-center"
+                className={`w-screen h-screen flex-shrink-0 flex items-center justify-center ${
+                  index === currentPanel ? 'bg-background' : 'bg-muted/10'
+                }`}
               >
                 <div className="max-w-6xl mx-auto px-6 lg:px-8">
                   <motion.div
@@ -271,6 +285,15 @@ export function HorizontalScroll() {
         </motion.div>
       </div>
 
+      {/* Current Panel Indicator */}
+      <div className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50">
+        <div className="bg-background/90 border border-border rounded-lg px-4 py-2">
+          <p className="text-sm font-medium text-foreground text-center">
+            {panels[currentPanel]?.title} Process
+          </p>
+        </div>
+      </div>
+
       {/* Debug Progress Indicator */}
       <div className="fixed top-4 left-4 z-50 bg-background/90 border border-border rounded-lg px-3 py-2">
         <p className="text-xs text-muted-foreground">
@@ -282,19 +305,25 @@ export function HorizontalScroll() {
         <div className="flex gap-2 mt-2">
           <button 
             onClick={() => setCurrentPanel(0)}
-            className="text-xs px-2 py-1 bg-accent/10 rounded hover:bg-accent/20"
+            className={`text-xs px-2 py-1 rounded ${
+              currentPanel === 0 ? 'bg-accent text-background' : 'bg-accent/10 hover:bg-accent/20'
+            }`}
           >
             Design
           </button>
           <button 
             onClick={() => setCurrentPanel(1)}
-            className="text-xs px-2 py-1 bg-accent/10 rounded hover:bg-accent/20"
+            className={`text-xs px-2 py-1 rounded ${
+              currentPanel === 1 ? 'bg-accent text-background' : 'bg-accent/10 hover:bg-accent/20'
+            }`}
           >
             Dev
           </button>
           <button 
             onClick={() => setCurrentPanel(2)}
-            className="text-xs px-2 py-1 bg-accent/10 rounded hover:bg-accent/20"
+            className={`text-xs px-2 py-1 rounded ${
+              currentPanel === 2 ? 'bg-accent text-background' : 'bg-accent/10 hover:bg-accent/20'
+            }`}
           >
             Marketing
           </button>
