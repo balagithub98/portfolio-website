@@ -142,6 +142,16 @@ export function HorizontalScroll() {
     }
   }
 
+  // Simple test - force panel change every 3 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentPanel(prev => (prev + 1) % 3)
+      console.log('Auto-changing panel to:', (currentPanel + 1) % 3)
+    }, 3000)
+    
+    return () => clearInterval(interval)
+  }, [currentPanel])
+
   // Update current panel based on scroll progress
   useEffect(() => {
     const unsubscribe = scrollYProgress.onChange((latest) => {
