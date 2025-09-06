@@ -79,6 +79,91 @@ const technologies = [
     name: 'Figma', 
     logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg',
     alt: 'Figma - A collaborative interface design tool'
+  },
+  { 
+    name: 'Webflow', 
+    logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/webflow/webflow-original.svg',
+    alt: 'Webflow - A visual web design platform'
+  },
+  { 
+    name: 'WordPress', 
+    logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/wordpress/wordpress-original.svg',
+    alt: 'WordPress - A popular content management system'
+  },
+  { 
+    name: 'Wix', 
+    logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/wix/wix-original.svg',
+    alt: 'Wix - A cloud-based web development platform'
+  },
+  { 
+    name: 'Clerk', 
+    logo: 'https://clerk.com/favicon.ico',
+    alt: 'Clerk - Authentication and user management platform'
+  },
+  { 
+    name: 'Supabase', 
+    logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/supabase/supabase-original.svg',
+    alt: 'Supabase - An open source Firebase alternative'
+  },
+  { 
+    name: 'Resend', 
+    logo: 'https://resend.com/favicon.ico',
+    alt: 'Resend - Email API for developers'
+  },
+  { 
+    name: 'MailerSend', 
+    logo: 'https://www.mailersend.com/favicon.ico',
+    alt: 'MailerSend - Email delivery service'
+  },
+  { 
+    name: 'Vercel', 
+    logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vercel/vercel-original.svg',
+    alt: 'Vercel - A platform for frontend developers'
+  },
+  { 
+    name: 'Netlify', 
+    logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/netlify/netlify-original.svg',
+    alt: 'Netlify - A web development platform'
+  },
+  { 
+    name: 'GitHub', 
+    logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
+    alt: 'GitHub - A code hosting platform for version control'
+  },
+  { 
+    name: 'Docker', 
+    logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg',
+    alt: 'Docker - A containerization platform'
+  },
+  { 
+    name: 'Kubernetes', 
+    logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-original.svg',
+    alt: 'Kubernetes - A container orchestration platform'
+  },
+  { 
+    name: 'AWS', 
+    logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg',
+    alt: 'Amazon Web Services - A cloud computing platform'
+  },
+  { 
+    name: 'GCP', 
+    logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg',
+    alt: 'Google Cloud Platform - A cloud computing platform'
+  },
+  { 
+    name: 'Azure', 
+    logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg',
+    alt: 'Microsoft Azure - A cloud computing platform'
+  },
+  { 
+    name: 'PlanetScale', 
+    logo: 'https://planetscale.com/favicon.ico',
+    alt: 'PlanetScale - A serverless MySQL platform'
+  },
+  { 
+    name: 'Prisma', 
+    logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/prisma/prisma-original.svg',
+    alt: 'Prisma - A database toolkit for TypeScript and Node.js'
   }
 ]
 
@@ -97,7 +182,7 @@ export function TechIcons() {
             viewport={{ once: true }}
           >
             <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl mb-6">
-              Built with Modern Technologies
+                Built with Modern Technologies
             </h2>
             <p className="text-lg leading-8 text-gray-600">
               We use the latest and most powerful technologies to create fast, secure, and scalable websites that deliver exceptional performance.
