@@ -73,7 +73,7 @@ export function HorizontalScroll() {
   })
 
   // Create a more controlled scroll progression
-  const x = useTransform(scrollYProgress, [0, 0.33, 0.66, 1], ["0%", "-100%", "-200%", "-200%"])
+  const x = useTransform(scrollYProgress, [0, 0.25, 0.5, 0.75, 1], ["0%", "-100%", "-200%", "-200%", "-200%"])
   const smoothX = useSpring(x, { stiffness: 100, damping: 30, restDelta: 0.001 })
 
   // Handle keyboard navigation
@@ -125,11 +125,12 @@ export function HorizontalScroll() {
   // Update current panel based on scroll progress with lock mechanism
   useEffect(() => {
     const unsubscribe = scrollYProgress.onChange((latest) => {
-      if (latest < 0.33) {
+      console.log('Scroll progress:', latest) // Debug log
+      if (latest < 0.25) {
         setCurrentPanel(0) // Design
-      } else if (latest < 0.66) {
+      } else if (latest < 0.5) {
         setCurrentPanel(1) // Development
-      } else if (latest < 0.9) {
+      } else if (latest < 0.75) {
         setCurrentPanel(2) // Marketing
       } else {
         // Lock at the end - no more horizontal movement
@@ -273,12 +274,19 @@ export function HorizontalScroll() {
         </motion.div>
       </div>
 
+      {/* Debug Progress Indicator */}
+      <div className="fixed top-4 left-4 z-50 bg-background/90 border border-border rounded-lg px-3 py-2">
+        <p className="text-xs text-muted-foreground">
+          Progress: {Math.round(scrollYProgress.get() * 100)}% | Panel: {currentPanel + 1}/3
+        </p>
+      </div>
+
       {/* Lock/Release Indicator */}
       <motion.div
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ 
-          opacity: scrollYProgress.get() > 0.8 ? 1 : 0,
-          scale: scrollYProgress.get() > 0.8 ? 1 : 0.8
+          opacity: scrollYProgress.get() > 0.75 ? 1 : 0,
+          scale: scrollYProgress.get() > 0.75 ? 1 : 0.8
         }}
         className="fixed top-8 left-1/2 transform -translate-x-1/2 z-50"
       >
