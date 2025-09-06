@@ -1,8 +1,9 @@
 'use client'
 
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
 import { motion, useScroll, useTransform, useSpring, useMotionValue } from 'framer-motion'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
+import { useInView } from 'react-intersection-observer'
 
 const panels = [
   {
@@ -63,13 +64,14 @@ const panels = [
 
 export function HorizontalScroll() {
   const [currentPanel, setCurrentPanel] = useState(0)
-  const [isScrolling, setIsScrolling] = useState(false)
+  const [isInView, setIsInView] = useState(false)
   const containerRef = useRef<HTMLDivElement>(null)
   const scrollRef = useRef<HTMLDivElement>(null)
   
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end start"]
+  // Use intersection observer to detect when section is in view
+  const { ref: inViewRef, inView } = useInView({
+    threshold: 0.1,
+    triggerOnce: false
   })
 
   // Create a motion value for horizontal position
@@ -83,22 +85,56 @@ export function HorizontalScroll() {
     x.set(targetX)
   }, [currentPanel, x])
 
-  // Force initial panel update based on scroll position
+  // Handle scroll-based panel switching
   useEffect(() => {
-    const progress = scrollYProgress.get()
-    console.log('Initial scroll progress:', progress)
-    if (progress < 0.33) {
-      setCurrentPanel(0)
-    } else if (progress < 0.66) {
-      setCurrentPanel(1)
-    } else {
-      setCurrentPanel(2)
+    if (!inView) return
+
+    const handleScroll = () => {
+      if (!containerRef.current) return
+
+      const rect = containerRef.current.getBoundingClientRect()
+      const scrollTop = window.scrollY
+      const elementTop = rect.top + scrollTop
+      const elementHeight = rect.height
+      const viewportHeight = window.innerHeight
+      
+      // Calculate scroll progress through the element
+      const elementStart = elementTop
+      const elementEnd = elementTop + elementHeight
+      const currentScroll = scrollTop + viewportHeight / 2
+      
+      const progress = Math.max(0, Math.min(1, (currentScroll - elementStart) / (elementEnd - elementStart)))
+      
+      console.log('Scroll progress:', progress)
+      
+      // Update panel based on progress
+      if (progress < 0.33) {
+        setCurrentPanel(0) // Design
+      } else if (progress < 0.66) {
+        setCurrentPanel(1) // Development
+      } else {
+        setCurrentPanel(2) // Marketing
+      }
     }
-  }, [])
+
+    // Initial check
+    handleScroll()
+    
+    // Listen to scroll events
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    window.addEventListener('resize', handleScroll, { passive: true })
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+      window.removeEventListener('resize', handleScroll)
+    }
+  }, [inView])
 
   // Handle keyboard navigation
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
+      if (!inView) return
+      
       if (e.key === 'ArrowLeft' && currentPanel > 0) {
         e.preventDefault()
         setCurrentPanel(prev => prev - 1)
@@ -110,7 +146,7 @@ export function HorizontalScroll() {
 
     window.addEventListener('keydown', handleKeyDown)
     return () => window.removeEventListener('keydown', handleKeyDown)
-  }, [currentPanel])
+  }, [currentPanel, inView])
 
   // Handle touch/swipe
   const [touchStart, setTouchStart] = useState<number | null>(null)
@@ -142,40 +178,53 @@ export function HorizontalScroll() {
     }
   }
 
-  // Simple test - force panel change every 3 seconds
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentPanel(prev => (prev + 1) % 3)
-      console.log('Auto-changing panel to:', (currentPanel + 1) % 3)
-    }, 3000)
-    
-    return () => clearInterval(interval)
-  }, [currentPanel])
-
-  // Update current panel based on scroll progress
-  useEffect(() => {
-    const unsubscribe = scrollYProgress.onChange((latest) => {
-      console.log('Scroll progress:', latest) // Debug log
-      let newPanel = 0
-      if (latest < 0.33) {
-        newPanel = 0 // Design
-      } else if (latest < 0.66) {
-        newPanel = 1 // Development
-      } else {
-        newPanel = 2 // Marketing
-      }
-      
-      // Only update if panel actually changed
-      if (newPanel !== currentPanel) {
-        console.log('Changing panel from', currentPanel, 'to', newPanel)
-        setCurrentPanel(newPanel)
-      }
-    })
-    return unsubscribe
-  }, [scrollYProgress, currentPanel])
-
   return (
-    <section className="relative">
+    <section className="relative" ref={inViewRef}>
+      {/* Current Panel Indicator */}
+      <div className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50">
+        <div className="bg-background/90 border border-border rounded-lg px-4 py-2">
+          <p className="text-sm font-medium text-foreground text-center">
+            {panels[currentPanel]?.title} Process
+          </p>
+        </div>
+      </div>
+
+      {/* Debug Progress Indicator */}
+      <div className="fixed top-4 left-4 z-50 bg-background/90 border border-border rounded-lg px-3 py-2">
+        <p className="text-xs text-muted-foreground">
+          Panel: {currentPanel + 1}/3 | InView: {inView ? 'Yes' : 'No'}
+        </p>
+        <p className="text-xs text-muted-foreground">
+          X Position: {Math.round(x.get())}%
+        </p>
+        <div className="flex gap-2 mt-2">
+          <button 
+            onClick={() => setCurrentPanel(0)}
+            className={`text-xs px-2 py-1 rounded ${
+              currentPanel === 0 ? 'bg-accent text-background' : 'bg-accent/10 hover:bg-accent/20'
+            }`}
+          >
+            Design
+          </button>
+          <button 
+            onClick={() => setCurrentPanel(1)}
+            className={`text-xs px-2 py-1 rounded ${
+              currentPanel === 1 ? 'bg-accent text-background' : 'bg-accent/10 hover:bg-accent/20'
+            }`}
+          >
+            Dev
+          </button>
+          <button 
+            onClick={() => setCurrentPanel(2)}
+            className={`text-xs px-2 py-1 rounded ${
+              currentPanel === 2 ? 'bg-accent text-background' : 'bg-accent/10 hover:bg-accent/20'
+            }`}
+          >
+            Marketing
+          </button>
+        </div>
+      </div>
+
       {/* Progress Indicator */}
       <div className="fixed top-1/2 right-8 z-50 transform -translate-y-1/2">
         <div className="flex flex-col space-y-3">
@@ -313,67 +362,6 @@ export function HorizontalScroll() {
           </p>
         </motion.div>
       </div>
-
-      {/* Current Panel Indicator */}
-      <div className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50">
-        <div className="bg-background/90 border border-border rounded-lg px-4 py-2">
-          <p className="text-sm font-medium text-foreground text-center">
-            {panels[currentPanel]?.title} Process
-          </p>
-        </div>
-      </div>
-
-      {/* Debug Progress Indicator */}
-      <div className="fixed top-4 left-4 z-50 bg-background/90 border border-border rounded-lg px-3 py-2">
-        <p className="text-xs text-muted-foreground">
-          Progress: {Math.round(scrollYProgress.get() * 100)}% | Panel: {currentPanel + 1}/3
-        </p>
-        <p className="text-xs text-muted-foreground">
-          X Position: {Math.round(x.get())}%
-        </p>
-        <div className="flex gap-2 mt-2">
-          <button 
-            onClick={() => setCurrentPanel(0)}
-            className={`text-xs px-2 py-1 rounded ${
-              currentPanel === 0 ? 'bg-accent text-background' : 'bg-accent/10 hover:bg-accent/20'
-            }`}
-          >
-            Design
-          </button>
-          <button 
-            onClick={() => setCurrentPanel(1)}
-            className={`text-xs px-2 py-1 rounded ${
-              currentPanel === 1 ? 'bg-accent text-background' : 'bg-accent/10 hover:bg-accent/20'
-            }`}
-          >
-            Dev
-          </button>
-          <button 
-            onClick={() => setCurrentPanel(2)}
-            className={`text-xs px-2 py-1 rounded ${
-              currentPanel === 2 ? 'bg-accent text-background' : 'bg-accent/10 hover:bg-accent/20'
-            }`}
-          >
-            Marketing
-          </button>
-        </div>
-      </div>
-
-      {/* Lock/Release Indicator */}
-      <motion.div
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ 
-          opacity: scrollYProgress.get() > 0.8 ? 1 : 0,
-          scale: scrollYProgress.get() > 0.8 ? 1 : 0.8
-        }}
-        className="fixed top-8 left-1/2 transform -translate-x-1/2 z-50"
-      >
-        <div className="bg-accent/10 border border-accent/20 rounded-lg px-4 py-2">
-          <p className="text-caption text-accent font-medium text-center">
-            🔓 Horizontal scroll releasing - normal scrolling resumes
-          </p>
-        </div>
-      </motion.div>
     </section>
   )
 }
