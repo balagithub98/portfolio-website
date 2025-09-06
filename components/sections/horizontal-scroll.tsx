@@ -79,8 +79,22 @@ export function HorizontalScroll() {
   // Update horizontal position when panel changes
   useEffect(() => {
     const targetX = -currentPanel * 100
+    console.log('Setting X position to:', targetX, 'for panel:', currentPanel)
     x.set(targetX)
   }, [currentPanel, x])
+
+  // Force initial panel update based on scroll position
+  useEffect(() => {
+    const progress = scrollYProgress.get()
+    console.log('Initial scroll progress:', progress)
+    if (progress < 0.33) {
+      setCurrentPanel(0)
+    } else if (progress < 0.66) {
+      setCurrentPanel(1)
+    } else {
+      setCurrentPanel(2)
+    }
+  }, [])
 
   // Handle keyboard navigation
   useEffect(() => {
@@ -132,16 +146,23 @@ export function HorizontalScroll() {
   useEffect(() => {
     const unsubscribe = scrollYProgress.onChange((latest) => {
       console.log('Scroll progress:', latest) // Debug log
+      let newPanel = 0
       if (latest < 0.33) {
-        setCurrentPanel(0) // Design
+        newPanel = 0 // Design
       } else if (latest < 0.66) {
-        setCurrentPanel(1) // Development
+        newPanel = 1 // Development
       } else {
-        setCurrentPanel(2) // Marketing
+        newPanel = 2 // Marketing
+      }
+      
+      // Only update if panel actually changed
+      if (newPanel !== currentPanel) {
+        console.log('Changing panel from', currentPanel, 'to', newPanel)
+        setCurrentPanel(newPanel)
       }
     })
     return unsubscribe
-  }, [scrollYProgress])
+  }, [scrollYProgress, currentPanel])
 
   return (
     <section className="relative">
@@ -235,7 +256,7 @@ export function HorizontalScroll() {
                     className="text-center"
                   >
                     <h2 className="text-display text-foreground mb-16">
-                      {panel.title}
+                      {panel.title} {index === currentPanel && <span className="text-accent">(ACTIVE)</span>}
                     </h2>
                     
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
