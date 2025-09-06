@@ -97,7 +97,7 @@ const technologies = [
   },
   { 
     name: 'Clerk', 
-    logo: 'https://clerk.com/favicon.ico',
+    logo: 'https://clerk.com/images/clerk-logo.svg',
     alt: 'Clerk - Authentication and user management platform'
   },
   { 
@@ -107,12 +107,12 @@ const technologies = [
   },
   { 
     name: 'Resend', 
-    logo: 'https://resend.com/favicon.ico',
+    logo: 'https://resend.com/logo.svg',
     alt: 'Resend - Email API for developers'
   },
   { 
     name: 'MailerSend', 
-    logo: 'https://www.mailersend.com/favicon.ico',
+    logo: 'https://www.mailersend.com/images/logo.svg',
     alt: 'MailerSend - Email delivery service'
   },
   { 
@@ -157,7 +157,7 @@ const technologies = [
   },
   { 
     name: 'PlanetScale', 
-    logo: 'https://planetscale.com/favicon.ico',
+    logo: 'https://planetscale.com/images/logo.svg',
     alt: 'PlanetScale - A serverless MySQL platform'
   },
   { 
@@ -229,7 +229,7 @@ export function TechIcons() {
                   className="flex-shrink-0 group relative"
                 >
                   <div 
-                    className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 backdrop-blur-sm border border-white/20 flex items-center justify-center relative"
+                    className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 backdrop-blur-sm border border-white/20 flex items-center justify-center relative p-2"
                     style={{
                       background: `linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.7) 100%)`
                     }}
@@ -237,11 +237,13 @@ export function TechIcons() {
                     <img
                       src={tech.logo}
                       alt={tech.alt}
-                      className="w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 object-contain object-center"
+                      className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 object-contain object-center"
                       style={{ 
                         display: 'block',
                         margin: 'auto',
-                        verticalAlign: 'middle'
+                        verticalAlign: 'middle',
+                        imageRendering: 'crisp-edges',
+                        filter: 'contrast(1.1) saturate(1.1)'
                       }}
                       loading="lazy"
                       onError={(e) => {
@@ -283,7 +285,7 @@ export function TechIcons() {
                   className="flex-shrink-0 group relative"
                 >
                   <div 
-                    className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 backdrop-blur-sm border border-white/20 flex items-center justify-center relative"
+                    className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 backdrop-blur-sm border border-white/20 flex items-center justify-center relative p-2"
                     style={{
                       background: `linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.7) 100%)`
                     }}
@@ -291,11 +293,13 @@ export function TechIcons() {
                     <img
                       src={tech.logo}
                       alt={tech.alt}
-                      className="w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 object-contain object-center"
+                      className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 object-contain object-center"
                       style={{ 
                         display: 'block',
                         margin: 'auto',
-                        verticalAlign: 'middle'
+                        verticalAlign: 'middle',
+                        imageRendering: 'crisp-edges',
+                        filter: 'contrast(1.1) saturate(1.1)'
                       }}
                       loading="lazy"
                       onError={(e) => {
@@ -337,7 +341,7 @@ export function TechIcons() {
                   className="flex-shrink-0 group relative"
                 >
                   <div 
-                    className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 backdrop-blur-sm border border-white/20 flex items-center justify-center relative"
+                    className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 backdrop-blur-sm border border-white/20 flex items-center justify-center relative p-2"
                     style={{
                       background: `linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.7) 100%)`
                     }}
@@ -345,11 +349,13 @@ export function TechIcons() {
                     <img
                       src={tech.logo}
                       alt={tech.alt}
-                      className="w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 object-contain object-center"
+                      className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 object-contain object-center"
                       style={{ 
                         display: 'block',
                         margin: 'auto',
-                        verticalAlign: 'middle'
+                        verticalAlign: 'middle',
+                        imageRendering: 'crisp-edges',
+                        filter: 'contrast(1.1) saturate(1.1)'
                       }}
                       loading="lazy"
                       onError={(e) => {
