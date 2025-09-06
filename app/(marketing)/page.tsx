@@ -13,6 +13,7 @@ import { CustomerPainPoints } from '@/components/sections/customer-pain-points'
 import { FAQ } from '@/components/sections/faq'
 import { FinalCTA } from '@/components/sections/final-cta'
 import { DemoCTA } from '@/components/sections/demo-cta'
+import { LandingHorizontalScroll } from '@/components/sections/landing-horizontal-scroll'
 import { generateMetadata as generatePageMetadata } from '@/lib/utils'
 
 export const metadata = generatePageMetadata({
@@ -31,6 +32,12 @@ export default function HomePage() {
       <FeaturesBenefits />
       <ScreenCompatibility />
       <TechIcons />
+      
+      {/* Horizontal Scroll Section */}
+      <section className="landing-horizontal-section relative h-screen overflow-hidden">
+        <LandingHorizontalScroll />
+      </section>
+      
       <DemoCTA />
       <StorytellingPanels />
       <Testimonials />
