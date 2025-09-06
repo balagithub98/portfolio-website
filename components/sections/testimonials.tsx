@@ -40,32 +40,26 @@ const testimonials = [
 
 export function Testimonials() {
   return (
-    <section className="py-24 sm:py-32 bg-gradient-to-br from-amber-100 via-orange-50 to-yellow-100 relative overflow-hidden">
-      {/* Background elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-20 right-20 w-80 h-80 bg-gradient-to-br from-amber-300/20 to-orange-300/20 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 left-20 w-80 h-80 bg-gradient-to-br from-yellow-300/20 to-amber-300/20 rounded-full blur-3xl"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-br from-orange-300/15 to-yellow-300/15 rounded-full blur-2xl"></div>
-      </div>
-      <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="mx-auto max-w-2xl text-center">
+    <section className="py-24 sm:py-32 bg-background">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        <div className="mx-auto max-w-3xl text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+            <h2 className="text-heading text-foreground mb-6">
               What Our Clients Say
             </h2>
-            <p className="mt-6 text-lg leading-8 text-gray-600">
+            <p className="text-body text-muted-foreground leading-relaxed">
               Don't just take our word for it. Here's what our satisfied clients have to say about working with us.
             </p>
           </motion.div>
         </div>
         
-        <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
-          <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
+        <div className="mx-auto mt-16 max-w-6xl">
+          <div className="minimal-grid minimal-grid-2">
             {testimonials.map((testimonial, index) => (
               <motion.div
                 key={testimonial.name}
@@ -73,33 +67,29 @@ export function Testimonials() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="relative rounded-2xl p-8 shadow-xl border-2 border-amber-200 hover:shadow-2xl transition-all duration-300 backdrop-blur-xl"
-                style={{
-                  background: `linear-gradient(135deg, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0.2) 100%)`,
-                  boxShadow: `0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.1)`
-                }}
+                className="minimal-card p-8 hover-lift"
               >
                 <div className="absolute top-6 right-6">
-                  <Quote className="h-8 w-8 text-gray-300" />
+                  <Quote className="h-8 w-8 text-muted-foreground/30" />
                 </div>
                 
                 <div className="flex items-center mb-6">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-r from-amber-500 to-orange-500 text-white font-semibold shadow-lg">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-accent/10 text-accent font-semibold">
                     {testimonial.avatar}
                   </div>
                   <div className="ml-4">
-                    <div className="text-lg font-semibold text-gray-900">{testimonial.name}</div>
-                    <div className="text-sm text-gray-600">{testimonial.role}, {testimonial.company}</div>
+                    <div className="text-body font-semibold text-foreground">{testimonial.name}</div>
+                    <div className="text-caption text-muted-foreground">{testimonial.role}, {testimonial.company}</div>
                   </div>
                 </div>
                 
                 <div className="flex items-center mb-4">
                   {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
+                    <Star key={i} className="h-5 w-5 text-accent fill-current" />
                   ))}
                 </div>
                 
-                <blockquote className="text-gray-700 italic">
+                <blockquote className="text-body text-muted-foreground italic leading-relaxed">
                   "{testimonial.content}"
                 </blockquote>
               </motion.div>

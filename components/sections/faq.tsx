@@ -52,31 +52,25 @@ export function FAQ() {
   }
 
   return (
-    <section className="py-24 sm:py-32 bg-gradient-to-br from-emerald-100 via-teal-50 to-cyan-100 relative overflow-hidden">
-      {/* Background elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-20 left-20 w-80 h-80 bg-gradient-to-br from-emerald-300/20 to-teal-300/20 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 right-20 w-80 h-80 bg-gradient-to-br from-cyan-300/20 to-blue-300/20 rounded-full blur-3xl"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-br from-teal-300/15 to-emerald-300/15 rounded-full blur-2xl"></div>
-      </div>
-      <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="mx-auto max-w-2xl text-center">
+    <section className="py-24 sm:py-32 bg-muted/30">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        <div className="mx-auto max-w-3xl text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+            <h2 className="text-heading text-foreground mb-6">
               Frequently Asked Questions
             </h2>
-            <p className="mt-6 text-lg leading-8 text-gray-600">
+            <p className="text-body text-muted-foreground leading-relaxed">
               Got questions? We've got answers. Here are the most common questions we receive from our clients.
             </p>
           </motion.div>
         </div>
         
-        <div className="mx-auto mt-16 max-w-3xl">
+        <div className="mx-auto mt-16 max-w-4xl">
           <div className="space-y-4">
             {faqs.map((faq, index) => (
               <motion.div
@@ -85,23 +79,19 @@ export function FAQ() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="rounded-2xl shadow-xl border-2 border-emerald-200 overflow-hidden hover:shadow-2xl transition-all duration-300 backdrop-blur-xl"
-                style={{
-                  background: `linear-gradient(135deg, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0.2) 100%)`,
-                  boxShadow: `0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.1)`
-                }}
+                className="minimal-card overflow-hidden hover-lift"
               >
                 <button
                   onClick={() => toggleItem(index)}
-                  className="w-full px-6 py-6 text-left flex items-center justify-between hover:bg-white/50 transition-colors"
+                  className="w-full px-6 py-6 text-left flex items-center justify-between hover:bg-muted/50 transition-colors"
                 >
-                  <h3 className="text-lg font-semibold text-gray-900 pr-4">
+                  <h3 className="text-body font-semibold text-foreground pr-4">
                     {faq.question}
                   </h3>
                   {openItems.includes(index) ? (
-                    <ChevronUp className="h-5 w-5 text-gray-500 flex-shrink-0" />
+                    <ChevronUp className="h-5 w-5 text-muted-foreground flex-shrink-0" />
                   ) : (
-                    <ChevronDown className="h-5 w-5 text-gray-500 flex-shrink-0" />
+                    <ChevronDown className="h-5 w-5 text-muted-foreground flex-shrink-0" />
                   )}
                 </button>
                 <motion.div
@@ -114,7 +104,7 @@ export function FAQ() {
                   className="overflow-hidden"
                 >
                   <div className="px-6 pb-6">
-                    <p className="text-gray-600 leading-relaxed">
+                    <p className="text-body text-muted-foreground leading-relaxed">
                       {faq.answer}
                     </p>
                   </div>
