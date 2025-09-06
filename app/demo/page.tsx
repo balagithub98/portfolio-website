@@ -27,9 +27,7 @@ export default function DemoPage() {
 
       {/* Horizontal scroll section */}
       <section className="horizontal-section relative h-screen overflow-hidden">
-        <div className="flex h-full w-max">
-          <HorizontalScroll />
-        </div>
+        <HorizontalScroll />
       </section>
 
       {/* Normal vertical section after */}

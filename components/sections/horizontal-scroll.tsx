@@ -11,6 +11,7 @@ export function HorizontalScroll() {
     gsap.registerPlugin(ScrollTrigger)
 
     const panels = gsap.utils.toArray(".panel")
+    console.log('Found panels:', panels.length)
 
     gsap.to(panels, {
       xPercent: -100 * (panels.length - 1),
@@ -21,6 +22,9 @@ export function HorizontalScroll() {
         scrub: true,
         start: "top top",
         end: () => "+=" + window.innerWidth * (panels.length - 1),
+        onUpdate: (self) => {
+          console.log('Scroll progress:', self.progress)
+        }
       },
     })
 
@@ -38,7 +42,14 @@ export function HorizontalScroll() {
   )
 
   return (
-    <div className="w-full">
+    <div ref={containerRef} className="flex h-full w-max">
+      {/* Debug indicator */}
+      <div className="fixed top-4 left-4 z-50 bg-background/90 border border-border rounded-lg px-3 py-2">
+        <p className="text-xs text-muted-foreground">
+          GSAP ScrollTrigger Active - Scroll to see panels
+        </p>
+      </div>
+
       {/* Design Title Panel */}
       <div className="panel w-screen h-screen bg-background text-foreground flex items-center justify-center p-12">
         <h2 className="text-display text-foreground">Design</h2>
